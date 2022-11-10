@@ -1,6 +1,8 @@
-# __Today I Learned__
-- Today I Learned 의 약자
-- 하루 동안 학습한 내용이나 개발 관련 경험을 기록
+<a href="https://github.com/NOSTALJIAN" target="_blank"><img src="https://img.shields.io/badge/NOSTALJIAN-181717?style=flat-square&logo=GitHub&logoColor=white"/></a>
+
+# __TIL__
+> Today I Learned
+- 그날 그날 공부한 것을 정리합니다.
 
 ## __작성 규칙__
 - 폴더와 파일명은 영문으로 작성
