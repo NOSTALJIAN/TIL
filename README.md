@@ -1,10 +1,12 @@
 <!-- Badge Start -->
-<a href="https://github.com/NOSTALJIAN" target="_blank"><img src="https://img.shields.io/badge/NOSTALJIAN-181717?style=flat-square&logo=GitHub&logoColor=white"/></a>&nbsp;<!-- Blog Badge Start --><a href="https://nostal-jian.tistory.com" target="_blank"><img src="https://img.shields.io/badge/JIAN's BLOG-F856F3?style=flat-square&logo=GitHub Sponsors&logoColor=white"></a>&nbsp;<!-- Mail Badge Start -->
+<a href="https://github.com/NOSTALJIAN" target="_blank"><img src="https://img.shields.io/badge/NOSTALJIAN-181717?style=flat-square&logo=GitHub&logoColor=white"/></a>&nbsp;
+<!-- Blog Badge Start --><a href="https://nostal-jian.tistory.com" target="_blank"><img src="https://img.shields.io/badge/JIAN's BLOG-F856F3?style=flat-square&logo=GitHub Sponsors&logoColor=white"></a>&nbsp;
+<!-- Mail Badge Start -->
 <a href="mailto:nostall.jian@gmail.com" target="_blank"><img src="https://img.shields.io/badge/nostall.jian@gmail.com-EA4335?style=flat-square&logo=Gmail&logoColor=white"></a>
 
 
 # __❤️‍🔥 TIL ❤️‍🔥__
-> Today I Learned
+> __Today I Learned__
 
   - 가능한 __매일 매일__ 작성하기 !
   - 그때 그때 배운 내용은 노트에 미리 적어두고 📝 정리
