@@ -1,14 +1,19 @@
-<a href="https://github.com/NOSTALJIAN" target="_blank"><img src="https://img.shields.io/badge/NOSTALJIAN-181717?style=flat-square&logo=GitHub&logoColor=white"/></a>
+<!-- Badge Start -->
+<a href="https://github.com/NOSTALJIAN" target="_blank"><img src="https://img.shields.io/badge/NOSTALJIAN-181717?style=flat-square&logo=GitHub&logoColor=white"/></a>&nbsp;<!-- Blog Badge Start --><a href="https://nostal-jian.tistory.com" target="_blank"><img src="https://img.shields.io/badge/JIAN's BLOG-F856F3?style=flat-square&logo=GitHub Sponsors&logoColor=white"></a>&nbsp;<!-- Mail Badge Start -->
+<a href="mailto:nostall.jian@gmail.com" target="_blank"><img src="https://img.shields.io/badge/nostall.jian@gmail.com-EA4335?style=flat-square&logo=Gmail&logoColor=white"></a>
 
-# __TIL__
+
+# __❤️‍🔥 TIL ❤️‍🔥__
 > Today I Learned
-- 그날 그날 공부한 것을 정리합니다.
+
+  - 가능한 __매일 매일__ 작성하기 !
+  - 그때 그때 배운 내용은 노트에 미리 적어두고 📝 정리
+  - __🌟 습관 만들기 🌟__
 
 ## __작성 규칙__
-- 폴더와 파일명은 영문으로 작성
-- 추가적인 검색을 하지 않도록 최대한 자세히 기록
-- 더 많은 공유를 원하는 기록은 [블로그](https://nostal-jian.tistory.com/)에 작성
-- __reference 명시__, 원작자가 허용하는 자료만 사용
+1. 폴더와 파일명은 __영문__ 으로 작성
+2. 추가적인 검색을 하지 않도록 최대한 __자세히__ 기록
+3. __reference 명시__, 원작자가 허용하는 자료만 사용
   
 ## __분류__
 
