@@ -41,4 +41,4 @@
 
 ### __Git__
 
-- [🔗 README PROFILE에 BADGE 넣어보기](https://github.com/NOSTALJIAN/TIL/blob/8295fc7ecf350afb171bd2c976ee746acffc897e/TIL_221111.md#L21)
+- [🔗 README PROFILE에 BADGE 넣어보기](https://github.com/NOSTALJIAN/TIL/blob/8295fc7ecf350afb171bd2c976ee746acffc897e/TIL_221111.md#badge)
