@@ -1,23 +1,20 @@
 <!-- TIL Start -->
 
-# __❤️‍🔥 TIL ❤️‍🔥__
+# **❤️‍🔥 TIL ❤️‍🔥**
 
-> __Today I Learned__
+> **Today I Learned**
 
-- 가능한 __매일 매일__ 작성하기 !  __일일커밋__ 👩🏻‍💻
+- 가능한 **매일 매일** 작성하기 !  **일일커밋** 👩🏻‍💻
 - 그때 그때 배운 내용은 노트에 미리 적어두고📝 정리
-- __🌟 습관 만들기 🌟__
+- **🌟 습관 만들기 🌟**
 
 <br><!-- 단락 구분을 위한 코드 -->
 
-## __작성 규칙__
+## **작성 규칙**
 
-1. 폴더와 파일명은 __영문__ 으로 작성
-2. 추가적인 검색을 하지 않도록 최대한 __자세히__ 기록
-3. __reference 명시__, 원작자가 허용하는 자료만 사용
-4. 카테고리별로 폴더 생성
-5. README.md 업데이트
-6. 형식 : TIL_YYMMDD.md
+1. 형식 : **TIL_YYMMDD.md**
+2. **폴더**와 **파일명**은 **영문**으로 작성
+3. README.md 업데이트
 
 <br>
 
@@ -33,12 +30,20 @@
 ---
 <br>
 
-## __분류__
+## **🗂️ CATEGORY**
 
-### __JAVA__
+### **JAVA**
 
 - 이것 저것 작성해서 채워넣기 (링크)
 
-### __Git__
+### **Git**
 
-- [🔗 README PROFILE에 BADGE 넣어보기](https://github.com/NOSTALJIAN/TIL/blob/8295fc7ecf350afb171bd2c976ee746acffc897e/TIL_221111.md#badge)
+- [🔗 Profile_README.md에 Badge 넣어보기](https://github.com/NOSTALJIAN/TIL/blob/8295fc7ecf350afb171bd2c976ee746acffc897e/TIL_221111.md#badge)
+- [🔗 제일 최근 Commit 수정하는 법](https://github.com/NOSTALJIAN/TIL/blob/master/TIL_221112.md#-git-commit---amend--m-%EC%88%98%EC%A0%95%ED%95%A0-%EB%82%B4%EC%9A%A9-)
+- [🔗 강제로 Push 해보자](https://github.com/NOSTALJIAN/TIL/blob/master/TIL_221112.md#-git-push-origin-master---force-)
+
+### **MarkDown**
+
+- [🔗 CheckBox 만들어보기](https://github.com/NOSTALJIAN/TIL/blob/master/TIL_221111.md#task-list)
+
+<!--end-->
