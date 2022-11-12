@@ -41,4 +41,4 @@
 
 ### __Git__
 
-- 이것 저것 blah blah blah
+- [🔗 README PROFILE에 BADGE 넣어보기](https://vscode.dev/github/NOSTALJIAN/TIL/blob/0691815936d92d3b508765ad3ddb0c22912975a4/TIL_221111.md#L21https://vscode.dev/github/NOSTALJIAN/TIL/blob/0691815936d92d3b508765ad3ddb0c22912975a4/TIL_221111.md#L21)
