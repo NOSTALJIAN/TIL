@@ -35,6 +35,7 @@
 ### **JAVA**
 
 - [🔗 Java JVM 이란](https://github.com/NOSTALJIAN/TIL/blob/master/TIL_221113.md#-%EC%9E%90%EB%B0%94-%EA%B0%80%EC%83%81-%EA%B8%B0%EA%B3%84-jvm)
+- [🔗 변수란](https://github.com/NOSTALJIAN/TIL/blob/master/TIL_221113.md#-%EB%B3%80%EC%88%98%EB%9E%80)
 
 ### **Git**
 
