@@ -36,6 +36,17 @@
 
 - [🔗 Java JVM 이란](https://github.com/NOSTALJIAN/TIL/blob/master/TIL_221113.md#-%EC%9E%90%EB%B0%94-%EA%B0%80%EC%83%81-%EA%B8%B0%EA%B3%84-jvm)
 - [🔗 변수란](https://github.com/NOSTALJIAN/TIL/blob/master/TIL_221113.md#-%EB%B3%80%EC%88%98%EB%9E%80)
+- [🔗 변수와 자료형](https://nostal-jian.tistory.com/12)
+- [🔗 형변환과 연산식](https://nostal-jian.tistory.com/13)
+- [🔗 연산자와 연산식](https://nostal-jian.tistory.com/3)
+- [🔗 조건문](https://nostal-jian.tistory.com/4)
+- [🔗 데이터 타입 분류](https://nostal-jian.tistory.com/5)
+- [🔗 About CLASS](https://nostal-jian.tistory.com/6)
+- [🔗 About METHOD](https://nostal-jian.tistory.com/7)
+- [🔗 패키지와 접근제어자](https://nostal-jian.tistory.com/8)
+- [🔗 필드의 구분](https://nostal-jian.tistory.com/9)
+- [🔗 상속과 메소드오버라이딩](https://nostal-jian.tistory.com/10)
+- [🔗 다형성의 개념](https://nostal-jian.tistory.com/11)
 
 ### **Git**
 
