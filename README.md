@@ -32,7 +32,9 @@
 
 ## **🗂️ CATEGORY**
 
-### **JAVA**
+### ❣️ **JAVA**
+
+#### **이론**
 
 - [🔗 Java JVM 이란](https://github.com/NOSTALJIAN/TIL/blob/master/TIL_221113.md#-%EC%9E%90%EB%B0%94-%EA%B0%80%EC%83%81-%EA%B8%B0%EA%B3%84-jvm)
 - [🔗 변수란](https://github.com/NOSTALJIAN/TIL/blob/master/TIL_221113.md#-%EB%B3%80%EC%88%98%EB%9E%80)
@@ -48,13 +50,21 @@
 - [🔗 상속과 메소드오버라이딩](https://nostal-jian.tistory.com/10)
 - [🔗 다형성의 개념](https://nostal-jian.tistory.com/11)
 
-### **Git**
+#### **.java**
+
+- [🔗 ~221109](https://github.com/NOSTALJIAN/TIL/tree/master/Java/src/study)
+
+<br>
+
+### ❣️ **Git**
 
 - [🔗 Profile_README.md에 Badge 넣어보기](https://github.com/NOSTALJIAN/TIL/blob/8295fc7ecf350afb171bd2c976ee746acffc897e/TIL_221111.md#badge)
 - [🔗 제일 최근 Commit 수정하는 법](https://github.com/NOSTALJIAN/TIL/blob/master/TIL_221112.md#-git-commit---amend--m-%EC%88%98%EC%A0%95%ED%95%A0-%EB%82%B4%EC%9A%A9-)
 - [🔗 강제로 Push 해보자](https://github.com/NOSTALJIAN/TIL/blob/master/TIL_221112.md#-git-push-origin-master---force-)
 
-### **MarkDown**
+<br>
+
+### ❣️ **MarkDown**
 
 - [🔗 기본적인 마크다운 활용법](https://github.com/NOSTALJIAN/TIL/blob/master/TIL_221112.md#-%EA%B8%B0%EB%B3%B8%EC%A0%81%EC%9D%B8-%EB%A7%88%ED%81%AC%EB%8B%A4%EC%9A%B4-%ED%99%9C%EC%9A%A9%EB%B2%95-)
 - [🔗 CheckBox 만들어보기](https://github.com/NOSTALJIAN/TIL/blob/master/TIL_221111.md#task-list)
