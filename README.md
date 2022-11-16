@@ -49,6 +49,13 @@
 
 <br>
 
+### ❣️ **MySQL**
+- [🔗 SELECET문](https://github.com/NOSTALJIAN/JAVA/blob/897ca8d4e5f2126a5e59b7cb83520eb464be12d4/Jian/MySQL/221116_select.sql)
+- [🔗 DB & TABLE 생성](https://github.com/NOSTALJIAN/JAVA/blob/67221e5b6ef179ecafffa97fbc3fba959f024c5d/Jian/MySQL/PRACTICE_DB.sql)
+- [🔗 WHERE](https://github.com/NOSTALJIAN/JAVA/blob/897ca8d4e5f2126a5e59b7cb83520eb464be12d4/Jian/MySQL/221116_where.sql)
+
+<br>
+
 ### ❣️ **Git**
 
 - [🔗 Profile_README.md에 Badge 넣어보기](https://github.com/NOSTALJIAN/TIL/blob/8295fc7ecf350afb171bd2c976ee746acffc897e/TIL_221111.md#badge)
