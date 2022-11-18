@@ -46,6 +46,12 @@
 - [🔗 포장 값 비교](https://github.com/NOSTALJIAN/TIL/blob/master/TIL_221114.md#-%ED%8F%AC%EC%9E%A5-%EA%B0%92-%EB%B9%84%EA%B5%90)
 - [🔗 Random](https://github.com/NOSTALJIAN/TIL/blob/master/TIL_221114.md#-random)
 - [🔗 Annotation](https://github.com/NOSTALJIAN/TIL/blob/master/TIL_221114.md#-annotation)
+- [🔗 JDBC란?](https://github.com/NOSTALJIAN/TIL/blob/master/TIL_221118.md#-jdbc)
+- [🔗 MySQL DB 연결하기](https://github.com/NOSTALJIAN/TIL/blob/master/TIL_221118.md#-db-%EC%97%B0%EA%B2%B0)
+- [🔗 데이터 저장 - INSERT문](https://github.com/NOSTALJIAN/TIL/blob/master/TIL_221118.md#-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%80%EC%9E%A5)
+- [🔗 데이터 수정 - UPDATE문](https://github.com/NOSTALJIAN/TIL/blob/master/TIL_221118.md#-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%88%98%EC%A0%95)
+- [🔗 데이터 삭제 - DELETE문](https://github.com/NOSTALJIAN/TIL/blob/master/TIL_221118.md#-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%82%AD%EC%A0%9C)
+- [🔗 데이터 읽기 - ResultSet](https://github.com/NOSTALJIAN/TIL/blob/master/TIL_221118.md#-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%9D%BD%EA%B8%B0)
 
 <br>
 
