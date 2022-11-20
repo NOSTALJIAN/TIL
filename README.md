@@ -52,6 +52,8 @@
 - [🔗 데이터 수정 - UPDATE문](https://github.com/NOSTALJIAN/TIL/blob/master/TIL_221118.md#-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%88%98%EC%A0%95)
 - [🔗 데이터 삭제 - DELETE문](https://github.com/NOSTALJIAN/TIL/blob/master/TIL_221118.md#-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%82%AD%EC%A0%9C)
 - [🔗 데이터 읽기 - ResultSet](https://github.com/NOSTALJIAN/TIL/blob/master/TIL_221118.md#-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%9D%BD%EA%B8%B0)
+- [🔗 트랜잭션](https://github.com/NOSTALJIAN/TIL/blob/master/TIL_221119.md#-%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98-%EC%B2%98%EB%A6%AC)
+- [🔗 게시판 구현](https://github.com/NOSTALJIAN/TIL/blob/master/TIL_221119.md#-%EA%B2%8C%EC%8B%9C%ED%8C%90-%EA%B5%AC%ED%98%84)
 
 <br>
 
