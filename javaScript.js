@@ -1,9 +1,8 @@
-let x = 'outer x';
-{
-  let x = 'inner x';
-  let y = 'inner y';
-  console.log(x);
-  console.log(y);
+var a = 'global';
+function f() {
+  var b = 'local';
+  console.log(a);
+  return b;
 }
-console.log(x);
-console.log(y);
+f();
+console.log(b);
