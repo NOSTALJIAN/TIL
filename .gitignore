@@ -8,6 +8,7 @@ IMAGE/myWebMac.gif
 IMAGE/myWeb.gif
 IMAGE/myWeb.mov
 IMAGE/myWebM.gif
+*.js
 
 .metadata/
 bin/
