@@ -1,0 +1,1312 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>JavaScript BASIC</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="4b15d731-f9a5-48ac-97fd-6592751b4441" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="JavaScript%20BASIC%204b15d731f9a548ac97fd6592751b4441/imgbin_javascript-logo-html-comment-blog-png.png"/></div><h1 class="page-title">JavaScript BASIC</h1></header><div class="page-body"><ul id="28f0efc4-6aa9-4c18-ae80-38984f3f33e9" class="toggle"><li><details open=""><summary>목차</summary><nav id="258460ed-8c4f-493f-8f21-d2c411f70098" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#bb378f41-4790-4cee-93ce-7f5e984ff2fe">변수</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#407681e3-4ea6-42e3-88eb-85250423d604">상수</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#57c7075d-90c4-4479-a5a2-72766dac1905">자료형</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#acd40f61-d0ca-41fd-9b09-7a7a3042760e">Primitive Type(원시타입)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#7cbd6b07-462d-4ba4-a359-125f5e63c12d">숫자</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#492d355b-9dd8-4f3d-80d9-b676c1fcdb76">문자열</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#10d8d8e9-e370-40bd-8ace-ed3760e76456">Boolean</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#8fac626d-ddda-4bf2-83ee-912a6686f37d">Null</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#acb03e46-3b1a-4b7f-8ac9-668c984a4572">Undefined</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#851d5af4-9464-4057-986f-6a8681ff8adb">형변환</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#42eac6f7-ce38-4c91-8cab-c3aa0f82642c">Non-Primitive Type(비 원시 타입)</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#c5dde604-85cc-4d8c-8251-9f14a5707f10">연산자</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2b9af2b0-86f3-45ec-9e9c-cc12f560ef81">대입 연산자</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6bdbfe7f-a93b-4a39-b275-b50526b0d897">산술 연산자</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1fa2d3f3-f7c6-4165-ba71-dc35e673b75c">연결 연산자</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#112ce49c-7384-4d4f-b780-aa2ed5ba8dba">복합 연산자</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#32ba828e-655d-4542-8342-61f608e00e4b">증감 연산자</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#bb1418d7-b105-4c0e-b002-2e518d4fc03c">전위 연산</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#647d11f0-6e5f-4ee5-a1be-ed1adc5fa6e0">후위 연산</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#142ede74-2ca0-4c4a-b04c-1af9a391e23a">논리 연산자</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b68527a2-3f84-4ce3-951a-352419ba1ae3">비교 연산자</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#297fa6a1-eade-47ba-be7a-cc26f7ab36fc">값 &amp; 자료형 비교</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#4e9cc912-2e8c-4878-a870-a674218dfb2b">크기 비교</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3697c9a0-56d6-4895-ab4d-d058ff813740">TYPE OF 연산자</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a28b282a-59fa-4c66-98ad-4cf95374ce10">NULL 병합 연산자</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#80bdb51c-98f6-4bc9-ad3d-a11f16991792">조건문</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#cd284224-c91d-42f9-b052-2d2341a3ab76">IF 문</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6aa9db29-20e3-4041-bb02-cce0d1dbc2a8">SWITCH 문</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#c3dd3e51-5c88-4782-b173-8ce942fb32c3">함수</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#337ad0b4-b1ed-48ac-ac26-2c50fe93ccb8">직사각형의 면적 구하기</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#1453c829-ac7a-4526-8e34-f76749ca01f1">기존 방식</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#d012ebbc-88dd-4253-b6dc-4f6096c74a53">함수 사용</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#d3971aff-9f4e-479b-b97b-0e726c7cd1b5">매개변수 사용</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#d72b2f9b-d450-4ede-b540-1f974414d144">대입연산자 사용</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f3a60dbc-ba5d-4042-b213-bbe8d832402e">함수 표현식</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#55e2028c-02f3-47b4-bd69-400903d95423">호이스팅</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#393b5f1c-c9a3-46e2-90fa-a1cc555c6f7d">화살표 함수</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0f20c36d-d86b-42cd-a8b4-86f8ad86e7e5">콜백 함수</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b085fb68-9eb9-4012-9aa4-8718b73788f6">객체</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d6b96abb-9a45-49bf-9ef1-f721ae4a7075">객체 생성자 방식</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ef4a681b-033c-4386-8b70-a0a893d147cc">객체 리터럴 방식</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#8f1cb452-2b24-413f-bb2f-2fb4b1b4c8ab">점 표기법</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#d30ef4e8-7fdb-46c9-b773-ef02c5436ecd">괄호 표기법</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b044a894-5a02-4ccd-a5b8-d61d93524853">프로퍼티 추가</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#78031bc2-12c0-4b33-9870-110fdc3217e2">점 표기법 사용</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#f6ac585d-422b-464a-ade8-09062d89f2ff">괄호 표기법 사용</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#f4e13cdf-23cc-4f35-afe9-3f5edd6280b5">추가</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#cdfcfae1-e436-463f-be91-7a485fd36ca0">삭제</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#286b955c-09df-41ab-98ba-c4d3587a2461">함수 호출</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#778e0605-2062-41ee-8199-95b4ba1b59f4">프로퍼티</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#87c439d4-40f8-4c60-82f7-89653d19dad2">불러오기</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#b991412a-aa5c-4542-9c8d-f420f3a5d665">존재하지 않는 프로퍼티 불러오기</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#51ea3b0b-fff0-48da-a13f-f0823b4b1ccd">프로퍼티 존재 여부 확인하기</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ce4af54d-3cd7-441b-a3e1-d950a9e73bb3">배열</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#bce75e2c-52d0-407d-9a3e-741b874ac4ca">인덱스</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e25d8c9b-32d9-422d-b3b0-24834f3b5c19">추가</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a29ec9c6-cf45-4265-a331-2a392d22d46f">배열의 길이</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e6fb051f-f437-4d87-99c5-2ac9aeff74f1">반복문</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f0f329ee-f9ca-4707-a2ce-f215ab050286">for 반복문</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#3dfd0a4e-8881-403a-a054-9920b9762791">인덱스 순회</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#d9ca4a20-6fb5-47c7-8494-18beb74dca76">객체 순회</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#69eec456-a0ed-4483-a065-84b9bb6c88ad">배열 내장 함수</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#61918b37-fc52-4e15-b934-ef3c917fc72c">배열 순회</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#d6efb8d0-495d-4548-8ec8-7b0a8b9d6937">기존 for문 사용</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#960ade14-7a1c-4379-8fd2-88673cd3e51e">forEach</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#4b9b6ca7-f881-4add-bb55-c0a361aee804">Map</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#80eb709f-dfb6-4409-91ff-cf4ba288664c">Includes</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#dce35536-49ca-4749-b799-f7bc4a300f7b">IndexOf</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#8e98e0ff-160f-4978-8a19-9f03160d0ae7">FindIndex</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#84daea8a-089d-47b5-8957-59ee0b4e72f1">Find</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#8b60890a-1dc1-4526-81ff-12feb069efca">Fillter</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#f45fef1e-06eb-49c0-b19f-ec9dc26f8a71">Slice</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#293bab4a-0d7a-4caf-be44-b111cf0af3f7">Concat</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#34b02ab2-2df6-46fc-be43-ddf2df62de13">Sort</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#d94a7b0f-d33f-47e0-8b5a-81c0441744e4">Join</a></div></nav></details></li></ul><h1 id="bb378f41-4790-4cee-93ce-7f5e984ff2fe" class="">변수</h1><pre id="75255fb2-8692-4e1f-b04e-677b9e36eb39" class="code"><code>let age = 25;
+console.log(age); // 25
+
+age = 30;
+console.log(age); // 30
+
+let ag_$e = 25;
+console.log(ag_$e); // 25</code></pre><ul id="1f74599c-1cff-48ec-b850-741d6e9ebc84" class="bulleted-list"><li style="list-style-type:disc">변수명에는 기호 사용 불가 (<code>_</code>, <code>$</code> 제외)</li></ul><ul id="98a19f07-e6b1-42c1-ab45-1244614a5146" class="bulleted-list"><li style="list-style-type:disc">변수명 앞에는 숫자 사용 불가</li></ul><p id="1b476dc6-de6f-4656-af9d-34758fd0c58d" class="">
+</p><pre id="7e7759ae-d54b-4645-be8c-47cb3ce5cafd" class="code"><code>var age = 25;
+console.log(age); // 25
+
+age = 30;
+console.log(age); // 30</code></pre><ul id="a3ec0b39-b9da-4665-b8f2-549524e1d9fa" class="bulleted-list"><li style="list-style-type:disc"><code>var</code> 와 <code>let</code> 은 사용법은 같음</li></ul><ul id="ef1c1f7e-df2d-47cd-a4ec-3664f0c07038" class="bulleted-list"><li style="list-style-type:disc"><code>var</code> 는 변수를 <strong><mark class="highlight-yellow_background">중복선언할 수 없음</mark></strong></li></ul><p id="4186d9da-049e-4576-b3c3-b90a3a82483b" class="">
+</p><hr id="e374173d-772a-479c-b800-70a82ebbf187"/><h1 id="407681e3-4ea6-42e3-88eb-85250423d604" class="">상수</h1><pre id="7c8c454b-1050-4ed0-a62f-79e6779a10a9" class="code"><code>const age = 25;
+console.log(age); // 25</code></pre><ul id="1d6b42bc-e697-41bc-b1e5-ff2f7177852f" class="bulleted-list"><li style="list-style-type:disc">상수는 <mark class="highlight-yellow_background"><strong>선언 이후에 값을 바꿀 수 없음</strong></mark></li></ul><ul id="f842cc91-dee1-408d-ab7b-d99c4645da6e" class="bulleted-list"><li style="list-style-type:disc">선언과 동시에 초기화가 이루어져야함</li></ul><p id="509f5e25-aff2-4901-a28e-8cc0a82704be" class="">
+</p><hr id="10a2bc95-8d54-44c2-8f92-9b9b1837db32"/><h1 id="57c7075d-90c4-4479-a5a2-72766dac1905" class="">자료형</h1><h2 id="acd40f61-d0ca-41fd-9b09-7a7a3042760e" class="">Primitive Type(원시타입)</h2><ul id="5d07ab8f-07e4-469f-b04d-23b83d0181be" class="bulleted-list"><li style="list-style-type:disc">한번에 하나의 값 만 가질 수 있음</li></ul><ul id="29f3f5cb-ca0d-4602-8d2d-fe70a77f53c2" class="bulleted-list"><li style="list-style-type:disc">하나의 고정된 저장 공간 이용</li></ul><ul id="04d1180a-5cc6-4b27-a2fd-e4a3c338e042" class="bulleted-list"><li style="list-style-type:disc">종류<ol type="1" id="d544d0e2-5239-46a5-b3b1-66efb54b904b" class="numbered-list" start="1"><li>Number</li></ol><ol type="1" id="77eb05ff-1269-4de8-be44-f9a1b793788a" class="numbered-list" start="2"><li>String</li></ol><ol type="1" id="2e81bd7d-099a-4b19-9266-5e81eecd3464" class="numbered-list" start="3"><li>Boolean</li></ol><ol type="1" id="e5d5d13d-e1d3-482b-85b4-4a6c68db4828" class="numbered-list" start="4"><li>Undefined</li></ol><ol type="1" id="f9e08d13-1ea8-46f1-a90c-30bb99c9dbae" class="numbered-list" start="5"><li>Null</li></ol></li></ul><h3 id="7cbd6b07-462d-4ba4-a359-125f5e63c12d" class="">숫자</h3><pre id="3652325f-e477-4aa3-872c-582bee44b3b0" class="code"><code>let number = 12;
+
+let age = 25; // 정수
+let tall = 175.9; // 실수
+let inf = Infinity;
+let minusInf = -Infinity;
+let nan = NaN;
+
+console.log(age + tall);  // 200.9
+
+let numberA = 12;
+let numberB = 2;
+
+console.log(numberA * numberB); // 24</code></pre><h3 id="492d355b-9dd8-4f3d-80d9-b676c1fcdb76" class="">문자열</h3><pre id="41973027-6587-4426-88b2-aaa32a6a2233" class="code"><code>let name = &quot;winterlood&quot;;
+let name2 = &quot;서지안&quot;;
+let name3 = `winterlood ${name2}`;
+
+console.log(name3); //  winterlood 서지안</code></pre><h3 id="10d8d8e9-e370-40bd-8ace-ed3760e76456" class="">Boolean</h3><pre id="090084f6-b494-4be2-8bf3-2ef1eab7baeb" class="code"><code>let isSwitchOff = false; // boolean type</code></pre><h3 id="8fac626d-ddda-4bf2-83ee-912a6686f37d" class="">Null</h3><pre id="27404d5f-3982-456b-828d-a6e041e9f6c3" class="code"><code>let a = null;
+console.log(a);</code></pre><h3 id="acb03e46-3b1a-4b7f-8ac9-668c984a4572" class="">Undefined</h3><pre id="937ec8c5-03c4-408c-813e-390bfc084a51" class="code"><code>let variable;
+
+console.log(variable);  // undefined</code></pre><h3 id="851d5af4-9464-4057-986f-6a8681ff8adb" class="">형변환</h3><pre id="b4214e00-ffc9-4858-8e72-b1e45d06113b" class="code"><code>let numberA = 12;
+let numberB = &quot;2&quot;;
+
+console.log(numberA * numberB); // 24 (문자열 &quot;2&quot;를 묵시적형변환)</code></pre><pre id="74c7bcdd-476d-4da5-a861-ac1a853172df" class="code"><code>let numberA = 12; // 숫자
+let numberB = &quot;2&quot;; // 문자
+
+console.log(numberA + numberB); // 122 (숫자를 문자열로 바꿔서 붙임)</code></pre><pre id="6c119c3e-4547-4931-b9d0-758df3414f25" class="code"><code>let numberA = 12;
+let numberB = &quot;2&quot;;
+
+console.log(numberA + parseInt(numberB)); // 14 (&quot;2&quot;를 숫자로 명시적형변환)</code></pre><p id="535d4cf0-2e9c-407c-92ce-383e6c8e816d" class="">
+</p><h2 id="42eac6f7-ce38-4c91-8cab-c3aa0f82642c" class="">Non-Primitive Type(비 원시 타입)</h2><ul id="27edd5c6-58ac-4921-b187-99f4c814e0ac" class="bulleted-list"><li style="list-style-type:disc">한번에 여러 개의 값을 가질 수 있음</li></ul><ul id="6b4eb6f5-7d7c-4b80-bca5-c52196de9183" class="bulleted-list"><li style="list-style-type:disc">여러 개의 고정되지 않은 동적 공간 사용</li></ul><ul id="575a1490-15d5-4f48-a849-73d9dfa40397" class="bulleted-list"><li style="list-style-type:disc">종류<ol type="1" id="0f91fa68-d2c9-48d7-bb7c-dbd8dd914ec2" class="numbered-list" start="1"><li>Object</li></ol><ol type="1" id="d7ba9a64-ace1-4ff2-b663-add6b3525e65" class="numbered-list" start="2"><li>Array</li></ol><ol type="1" id="9e84eeb1-c252-4887-9ab3-13099b2d6e35" class="numbered-list" start="3"><li>Function</li></ol></li></ul><pre id="c9b9c23a-8a37-475c-9101-036ce1d13a54" class="code"><code>let array = [1,2,3,4];</code></pre><p id="5c832d4f-648d-48f4-88e4-99f9f2eb5af8" class="">
+</p><hr id="c8098589-53c0-48c6-97e5-bae3b751f577"/><h1 id="c5dde604-85cc-4d8c-8251-9f14a5707f10" class="">연산자</h1><h2 id="2b9af2b0-86f3-45ec-9e9c-cc12f560ef81" class="">대입 연산자</h2><pre id="329e24ef-7227-47e1-a81d-d46d9e1006ae" class="code"><code>let a = 1;</code></pre><h2 id="6bdbfe7f-a93b-4a39-b275-b50526b0d897" class="">산술 연산자</h2><pre id="b970a3f5-871c-4760-ab7d-800442471c06" class="code"><code>let a = 1;
+let b = 2;
+
+console.log(a + b); // 3
+console.log(a * b); // 2
+console.log(a - b); // -1
+console.log(a / b); // 0.5
+console.log(a % b); // 1</code></pre><h2 id="1fa2d3f3-f7c6-4165-ba71-dc35e673b75c" class="">연결 연산자</h2><pre id="8b32df35-1944-48b8-800f-d3c7d9991a10" class="code"><code>let a = &quot;1&quot;;
+let b = &quot;2&quot;;
+
+console.log(a + b); // 12</code></pre><h2 id="112ce49c-7384-4d4f-b780-aa2ed5ba8dba" class="">복합 연산자</h2><pre id="574178f2-e65e-4b3c-b9f2-9cd7362481bc" class="code"><code>let a = 5;
+a = a + 10;
+
+console.log(a); // 15</code></pre><pre id="6eded7c0-f272-4d6d-803a-757845c4bab3" class="code"><code>let a = 5;
+a += 10;
+
+console.log(a); // 15</code></pre><pre id="490cddb4-434b-483a-8870-6c8be48b5219" class="code"><code>let a = 5;
+a -= 10;
+
+console.log(a); // -5</code></pre><pre id="8beac540-fcf9-4350-9822-78af46644c4e" class="code"><code>let a = 5;
+a /= 10;
+
+console.log(a); // 0.5</code></pre><h2 id="32ba828e-655d-4542-8342-61f608e00e4b" class="">증감 연산자</h2><ul id="45444586-33d9-4b6e-ae76-a5ef28f4e807" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background"><strong>숫자형</strong></mark>에만 사용 가능</li></ul><pre id="cf563c2f-90df-43d6-93ad-d7b1bb1fdac9" class="code"><code>let a = 10;
+a++;
+console.log(a); // 11
+
+let a = 10;
+a--;
+console.log(a); // 9</code></pre><h3 id="bb1418d7-b105-4c0e-b002-2e518d4fc03c" class="">전위 연산</h3><pre id="f681f854-a213-46b6-afce-966a493fbcaf" class="code"><code>let a = 10;
+console.log(++a); // 11
+
+let a = 10;
+console.log(--a); // 9</code></pre><h3 id="647d11f0-6e5f-4ee5-a1be-ed1adc5fa6e0" class="">후위 연산</h3><pre id="01f7ca38-5535-45cb-bc9a-c7b5e177b304" class="code"><code>let a = 10;
+console.log(a++); // 10
+console.log(a); // 11
+
+let a = 10;
+console.log(a--); // 10
+console.log(a); // 9</code></pre><p id="cbc68a2c-a62f-4886-912f-a1fd215fbfea" class="">
+</p><h2 id="142ede74-2ca0-4c4a-b04c-1af9a391e23a" class="">논리 연산자</h2><pre id="ba79174e-127e-4b2a-8495-9fe36a1f8c48" class="code"><code>console.log(!true); // false
+console.log(!false); // true
+
+console.log(true &amp;&amp; true); // true, true AND true
+console.log(true &amp;&amp; false); // false, true AND false
+
+console.log(true || false); // true, true OR false
+console.log(false || true); // true, false OR true
+console.log(false || false); // false, false OR false</code></pre><p id="2294c8eb-b825-4b66-8f7a-ef8ee82b740d" class="">
+</p><h2 id="b68527a2-3f84-4ce3-951a-352419ba1ae3" class="">비교 연산자</h2><h3 id="297fa6a1-eade-47ba-be7a-cc26f7ab36fc" class="">값 &amp; 자료형 비교</h3><pre id="2a3cd26f-df13-400a-b161-f9f08f66dc00" class="code"><code>let compareA = 1 == &quot;1&quot;;
+console.log(compareA); // true, 값만 비교
+
+let compareA = 1 === &quot;1&quot;;
+console.log(compareA); // false, 값과 자료형(type)까지 비교
+
+let compareA = 1 != &quot;1&quot;;
+console.log(compareA); // false, 1과 &quot;1&quot;의 값이 같지 않은지 비교
+
+let compareA = 1 !== &quot;1&quot;;
+console.log(compareA); // true, 1과 &quot;1&quot;의 값과 문자열이 같지 않은지 비교</code></pre><h3 id="4e9cc912-2e8c-4878-a870-a674218dfb2b" class="">크기 비교</h3><pre id="d5c920ed-4d07-496a-bdfa-c4254487e135" class="code"><code>let compareA = 1 &gt; 2;
+console.log(compareA); // false
+
+let compareA = 1 &lt; 2;
+console.log(compareA); // true
+
+let compareA = 1 &lt;= 2;
+console.log(compareA); // true
+
+let compareA = 2 &lt;= 2;
+console.log(compareA); // true
+
+let compareA = 2 &gt;= 2;
+console.log(compareA); // true</code></pre><p id="c72e9659-87f4-4ecb-8bc1-cf4abbbc1d00" class="">
+</p><h2 id="3697c9a0-56d6-4895-ab4d-d058ff813740" class="">TYPE OF 연산자</h2><pre id="67bd13a6-862c-4a32-a263-adb569501ebb" class="code"><code>let compareA = 1;
+
+console.log(typeof compareA); //  number
+
+let compareA = 1;
+compareA = &quot;1&quot;;
+
+console.log(typeof compareA); //  string</code></pre><p id="4c370538-ef2e-4c2b-99cc-d241adca91e1" class="">
+</p><h2 id="a28b282a-59fa-4c66-98ad-4cf95374ce10" class="">NULL 병합 연산자</h2><pre id="8182ca7e-847d-4713-b79c-8c2df2cec656" class="code"><code>let a; // 변수를 선언학고 초기화하지 않으면 값은 UNDEFINED
+
+a = a ?? 10;
+console.log(a); // 10, 양쪽의 피연산자 중 NULL이나 UNDEFINED이 아닌 값을 선택함</code></pre><p id="8fc0927c-1e3d-4a58-b5bd-67be58184979" class="">
+</p><hr id="9f394d2a-1943-4ef7-ad1c-52cef71a44ab"/><h1 id="80bdb51c-98f6-4bc9-ad3d-a11f16991792" class="">조건문</h1><h2 id="cd284224-c91d-42f9-b052-2d2341a3ab76" class="">IF 문</h2><pre id="6f91b4e4-1406-4796-97f0-0fcb37145f08" class="code"><code>let a = 3;
+
+if (a &gt;= 5) {
+  console.log(&quot;5 이상입니다.&quot;);
+} else {
+  console.log(&quot;5 이하입니다.&quot;); // O
+}
+
+// &quot;5 이하입니다.&quot;</code></pre><pre id="803fd505-9146-4363-ba58-ce3ad243cfbe" class="code"><code>let a = 5;
+
+if (a &gt;= 7) {
+  console.log(&quot;7 이상입니다.&quot;);
+} else if (a &gt;= 5) {
+  console.log(&quot;5 이하입니다.&quot;); // O
+} else {
+  console.log(&quot;5 이하입니다.&quot;);
+}
+
+// &quot;5 이하입니다.&quot;</code></pre><pre id="ae12f061-d01a-44e5-8257-d7f6fd91f48a" class="code"><code>let a = 4;
+
+if (a &gt;= 7) {
+  console.log(&quot;7 이상입니다.&quot;);
+} else if (a &gt;= 5) {
+  console.log(&quot;5 이하입니다.&quot;);
+} else if (a &gt;= 4) {
+  console.log(&quot;4 이상입니다.&quot;);
+} else {
+  console.log(&quot;5 이하입니다.&quot;);
+}
+
+// &quot;4 이상입니다.&quot;</code></pre><pre id="419a7da6-95d0-4bdd-b357-f63c4aca84ba" class="code"><code>let a = 0;
+
+if (a &gt;= 7) {
+  console.log(&quot;7 이상입니다.&quot;);
+} else if (a &gt;= 5) {
+  console.log(&quot;5 이하입니다.&quot;);
+} else if (a &gt;= 4) {
+  console.log(&quot;4 이상입니다.&quot;);
+} else {
+  console.log(&quot;5 이하입니다.&quot;); // O
+}
+
+// &quot;5 이하입니다.&quot;</code></pre><pre id="64a85ce0-5d76-47cb-bd8d-3ca07e952cac" class="code"><code>let country = &quot;ko&quot;;
+
+if (country === &quot;ko&quot;) {
+  console.log(&quot;한국&quot;);
+} else if (country === &quot;cn&quot;) {
+  console.log(&quot;중국&quot;);
+} else if (country === &quot;jp&quot;) {
+  console.log(&quot;일본&quot;);
+} else {
+  console.log(&quot;미분류&quot;);
+}
+
+// &quot;한국&quot;</code></pre><h2 id="6aa9db29-20e3-4041-bb02-cce0d1dbc2a8" class="">SWITCH 문</h2><pre id="f1e4f40c-1840-42c7-80c4-6ea9310bd193" class="code"><code>let country = &quot;ko&quot;;
+
+switch (country) {
+  case &quot;ko&quot;:
+    console.log(&quot;한국&quot;);
+    break;
+	// break를 사용하지 않으면 아래 코드가 다 수행됨
+  case &quot;cn&quot;:
+    console.log(&quot;중국&quot;);
+    break;
+  case &quot;jp&quot;:
+    console.log(&quot;일본&quot;);
+    break;
+  case &quot;uk&quot;:
+    console.log(&quot;영국&quot;);
+    break;
+	// if else if의 else와 같은 역할
+  default:
+    console.log(&quot;미분류&quot;);
+		break;
+}
+
+// &quot;한국&quot;</code></pre><p id="5906acdd-663c-4fb6-ad0f-17ead3da478b" class="">
+</p><hr id="6cd1ec22-876d-4242-b9ea-8fe7fd9cc348"/><h1 id="c3dd3e51-5c88-4782-b173-8ce942fb32c3" class="">함수</h1><h2 id="337ad0b4-b1ed-48ac-ac26-2c50fe93ccb8" class="">직사각형의 면적 구하기</h2><h3 id="1453c829-ac7a-4526-8e34-f76749ca01f1" class="">기존 방식</h3><pre id="76be9c24-2813-4901-ae5d-73819ed73dbc" class="code"><code>let width1 = 10;
+let heigh1 = 20;
+
+let area1 = width1 * heigh1;
+console.log(area1); // 200
+
+let width2 = 30;
+let heigh2 = 15;
+
+let area2 = width2 * heigh2;
+console.log(area2); //  450</code></pre><h3 id="d012ebbc-88dd-4253-b6dc-4f6096c74a53" class="">함수 사용</h3><pre id="ff91cb1a-0df7-4e26-90bc-b2ef138d2894" class="code"><code>function getArea() {
+  let width = 10;
+  let heigh = 20;
+
+  let area = width * heigh;
+  console.log(area);
+} // 함수 선언식, 함수 선언 방식의 함수 생성
+
+getArea(); // 200
+console.log(&quot;함수 실행 완료&quot;);</code></pre><h3 id="d3971aff-9f4e-479b-b97b-0e726c7cd1b5" class="">매개변수 사용</h3><pre id="91a2bc1c-7ca8-46f1-9e62-fadfa75c5374" class="code"><code>function getArea(width, heigh) {
+  let area = width * heigh;
+  console.log(area);
+} // 함수 선언식, 함수 선언 방식의 함수 생성
+
+getArea(1, 200); // 200
+getArea(2, 200); // 400
+getArea(3, 200); // 600
+getArea(4, 200); // 800
+getArea(5, 200); // 1000
+getArea(6, 200); // 1200
+getArea(7, 200); // 1400
+getArea(8, 200); // 1600
+getArea(9, 200); // 1800
+getArea(10, 200); // 2000
+getArea(100, 200); // 20000
+console.log(&quot;함수 실행 완료&quot;);</code></pre><h3 id="d72b2f9b-d450-4ede-b540-1f974414d144" class="">대입연산자 사용</h3><pre id="6ca1a2f0-d499-4b06-a4e5-d3ef281bc347" class="code"><code>let count = 1;
+
+function getArea(width, heigh) {
+  let area = width * heigh;
+	console.log(count);  // 함수 외부에서 선언된 변수도 사용 가능(전역변수)
+  return area;
+}
+
+let area1 = getArea(100, 200);  //  대입연산자 활용
+console.log(&quot;area1: &quot;, area1);  //  area1: 20000
+console.log(&quot;함수 실행 완료&quot;);
+
+console.log(area);  // 함수 내에서 선언된 변수는 밖에서 사용 불가(지역변수)</code></pre><p id="94035fa6-5263-4f66-bc3f-877ecba2f776" class="">
+</p><h2 id="f3a60dbc-ba5d-4042-b213-bbe8d832402e" class="">함수 표현식</h2><pre id="0733fa1f-e14d-493a-abd8-4d7ab2f8ab0d" class="code"><code>let hello = function () { //  함수를 값에 담을 땐, 이름을 명시하지 않아도 됨
+  return &quot;안녕하세요 여러분&quot;;
+}; // 함수 표현식
+
+function helloFunc() {
+  return &quot;안녕하세요 여러분&quot;;
+} // 함수 선언식
+
+const helloText = hello();
+console.log(helloText); //  안녕하세요 여러분</code></pre><h3 id="55e2028c-02f3-47b4-bd69-400903d95423" class="">호이스팅</h3><pre id="f0eb405b-3578-4df9-a81d-3c0e55d632b4" class="code"><code>console.log(helloB()); //  안녕하세요 여러분
+console.log(helloA()); //  Error
+
+let helloA = function () {
+  return &quot;안녕하세요 여러분&quot;;
+}; // 함수 표현식
+
+console.log(helloA()); //  안녕하세요 여러분
+
+function helloB() {
+  return &quot;안녕하세요 여러분&quot;;
+} // 함수 선언식</code></pre><ul id="5f735eb2-2946-4f7d-9b71-162afee4009f" class="bulleted-list"><li style="list-style-type:disc"><strong>함수 선언식</strong>을 사용하면 <strong><mark class="highlight-yellow_background">호이스팅 </mark></strong>발생</li></ul><h2 id="393b5f1c-c9a3-46e2-90fa-a1cc555c6f7d" class="">화살표 함수</h2><pre id="c08e6180-1fff-440a-a97d-31d493fc40a5" class="code"><code>console.log(helloA());  //  Error
+
+let helloA = () =&gt; &quot;안녕하세요 여러분&quot;;  //  함수 표현식
+
+console.log(helloA());  //  안녕하세요 여러분</code></pre><ul id="ff9e2550-ead5-4f6c-9427-ba3b2034e4ae" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background"><strong>호이스팅</strong></mark> 대상 X</li></ul><p id="3103e599-6032-4f4d-91f0-b177a9810466" class="">
+</p><h2 id="0f20c36d-d86b-42cd-a8b4-86f8ad86e7e5" class="">콜백 함수</h2><pre id="d87ec97a-ff8d-412d-b510-5894c2e82a26" class="code"><code>function checkMood(mood, goodCallback, badCallback) {
+  if (mood === &quot;good&quot;) {
+    // 기분이 좋을 때 하는 동작
+    goodCallback();
+  } else {
+    // 기분이 안 좋을 때ㅐ 하는 동작
+    badCallback();
+  }
+}
+
+function cry() {
+  console.log(&quot;ACTION :: CRY&quot;);
+}
+
+function sing() {
+  console.log(&quot;ACTION :: SING&quot;);
+}
+
+function dance() {
+  console.log(&quot;ACTION: DANCE&quot;);
+}
+
+// &quot;sad&quot;일 떄(기분이 안 좋을 떄), badCallback에 대입되고 cry() 실행
+checkMood(&quot;sad&quot;, sing, cry); //  ACTION :: CRY</code></pre><p id="b2442e48-1799-4409-9bd2-8167cd8ad867" class="">
+</p><hr id="e1a60e32-4862-4bde-902e-dc0b26d4d810"/><h1 id="b085fb68-9eb9-4012-9aa4-8718b73788f6" class="">객체</h1><h2 id="d6b96abb-9a45-49bf-9ef1-f721ae4a7075" class="">객체 생성자 방식</h2><pre id="7cdf45dc-b69d-44f4-983f-57a50ebd5351" class="code"><code>let person = new Object();</code></pre><h2 id="ef4a681b-033c-4386-8b70-a0a893d147cc" class="">객체 리터럴 방식</h2><pre id="681ae723-86aa-48f4-aebe-2a08d54d73b2" class="code"><code>let person = {};
+
+let person = {
+  key: &quot;value&quot;, //  프로퍼티 (객체 프로퍼티)
+  key1: 123,
+  key2: true,
+  key3: undefined,
+  key4: [1, 2],
+  key5: function () {}
+};
+
+console.log(person);
+//  {key: &quot;value&quot;, key1: 123, key2: true, key3: undefined, key4: Array(2)…}
+//  key: &quot;value&quot;
+//  key1: 123
+//  key2: true
+//  key3: undefined
+//  key4: Array(2)
+//        0: 1
+//        1: 2
+//  key5: ƒ key5() {}</code></pre><h3 id="8f1cb452-2b24-413f-bb2f-2fb4b1b4c8ab" class="">점 표기법</h3><pre id="04ae45a4-a338-4e04-b291-947d3055cfea" class="code"><code>let person = {
+  name: &quot;서지안&quot;,
+  age: 29
+};
+
+console.log(person.name); //  서지안
+console.log(person.age); //  29</code></pre><h3 id="d30ef4e8-7fdb-46c9-b773-ef02c5436ecd" class="">괄호 표기법</h3><pre id="1ed7b532-12e2-4711-a65b-f82754f05e51" class="code"><code>let person = {
+  name: &quot;서지안&quot;,
+  age: 29
+};
+
+const name = &quot;name&quot;;
+console.log(person[name]); //  서지안
+console.log(person[&quot;age&quot;]); //  29
+
+console.log(getPropertyValue(&quot;name&quot;));  //  서지안
+
+function getPropertyValue(key) {
+  return person[key];
+}</code></pre><h2 id="b044a894-5a02-4ccd-a5b8-d61d93524853" class="">프로퍼티 추가</h2><h3 id="78031bc2-12c0-4b33-9870-110fdc3217e2" class="">점 표기법 사용</h3><pre id="a89dd9f4-d58e-4382-ad4e-974ef1e05af0" class="code"><code>let person = {
+  name: &quot;서지안&quot;,
+  age: 29
+};
+
+person.location = &quot;한국&quot;;
+console.log(person);  //  {name: &quot;서지안&quot;, age: 29, location: &quot;한국&quot;}</code></pre><h3 id="f6ac585d-422b-464a-ade8-09062d89f2ff" class="">괄호 표기법 사용</h3><pre id="2e06e602-7e67-478a-86b3-c6232057139f" class="code"><code>let person = {
+  name: &quot;서지안&quot;,
+  age: 29
+};
+
+person[&quot;gender&quot;] = &quot;여성&quot;;
+console.log(person); //  {name: &quot;서지안&quot;, age: 29, gender: &quot;여성&quot;}</code></pre><h3 id="f4e13cdf-23cc-4f35-afe9-3f5edd6280b5" class="">추가</h3><ul id="8ed1886e-863b-4a23-9a61-ed522e48957c" class="bulleted-list"><li style="list-style-type:disc"><code>let</code>, <code>const</code> 둘 다 사용 가능</li></ul><ul id="7b3f03f5-2394-4687-8e19-77cd070798e6" class="bulleted-list"><li style="list-style-type:disc">객체 자체에 대입해서 수정하는게 아니기 때문에 <code>const</code> 사용 가능</li></ul><pre id="2f73e463-0e40-4ce8-9c35-05a53f5d807a" class="code"><code>let person = {
+  name: &quot;서지안&quot;,
+  age: 29
+};
+
+person.location = &quot;한국&quot;;
+person[&quot;gender&quot;] = &quot;여성&quot;;
+
+person.name = &quot;서지안 A&quot;;
+person[&quot;age&quot;] = &quot;30&quot;;
+console.log(person); //  {name: &quot;서지안 A&quot;, age: 30, location: &quot;한국&quot;, gender: &quot;여성&quot;}</code></pre><h3 id="cdfcfae1-e436-463f-be91-7a485fd36ca0" class="">삭제</h3><ul id="51de43e0-46a8-49dc-992b-b468089d6ea5" class="bulleted-list"><li style="list-style-type:disc"><code>delete</code> 사용 시에는 변수와 연결을 끊는 것, 데이터는 사라지지 않음</li></ul><ul id="2e50a260-95e1-4524-81cc-aa53764d64cc" class="bulleted-list"><li style="list-style-type:disc"><code>null</code> 사용 시에는 데이터가 초기화됨</li></ul><pre id="c63ef07e-f9e8-45e7-b521-34efaca7d25e" class="code"><code>const person = {
+  name: &quot;서지안&quot;,
+  age: 29
+};
+
+delete person.age;
+delete person[&quot;name&quot;];
+
+console.log(person); //  {}</code></pre><pre id="e6c0c2d3-7e7a-4498-95cf-e054c4eed982" class="code"><code>const person = {
+  name: &quot;서지안&quot;,
+  age: 29
+};
+
+person.age = null;
+delete person[&quot;name&quot;];
+
+console.log(person); //  {age: null}</code></pre><h2 id="286b955c-09df-41ab-98ba-c4d3587a2461" class="">함수 호출</h2><pre id="356ccb2e-8309-4516-8f57-1abea3cea706" class="code"><code>const person = {
+  name: &quot;서지안&quot;, //  멤버
+  age: 20, //  멤버
+  say: function () {
+    console.log(&quot;안녕&quot;);
+  } //  메서드 -&gt; 방법
+};
+
+person.say(); //  안녕
+person[&quot;say&quot;](); //  안녕</code></pre><h2 id="778e0605-2062-41ee-8199-95b4ba1b59f4" class="">프로퍼티</h2><h3 id="87c439d4-40f8-4c60-82f7-89653d19dad2" class="">불러오기</h3><pre id="29270f3e-8b14-4a55-ab72-d405c258d1ef" class="code"><code>const person = {
+  name: &quot;서지안&quot;, //  멤버
+  age: 29, //  멤버
+  say: function () {
+    console.log(`안녕 나는 ${this.name}`);
+  } //  메서드 -&gt; 방법
+};
+
+person[&quot;say&quot;](); //  안녕 나는 서지안</code></pre><pre id="7b04e547-4185-4da0-8cec-d4bba5ccc012" class="code"><code>const person = {
+  name: &quot;서지안&quot;, //  멤버
+  age: 29, //  멤버
+  say: function () {
+    console.log(`안녕 나는 ${person[&quot;name&quot;]}`);
+  } //  메서드 -&gt; 방법
+};
+
+person[&quot;say&quot;](); //  안녕 나는 서지안</code></pre><h3 id="b991412a-aa5c-4542-9c8d-f420f3a5d665" class="">존재하지 않는 프로퍼티 불러오기</h3><pre id="ceaa052c-ce5a-42b5-aaab-241a49bbec22" class="code"><code>const person = {
+  name: &quot;서지안&quot;, //  멤버
+  age: 29, //  멤버
+  say: function () {
+    console.log(`안녕 나는 ${person[&quot;name&quot;]}`);
+  } //  메서드 -&gt; 방법
+};
+
+console.log(person.gender); //  undefined</code></pre><h3 id="51ea3b0b-fff0-48da-a13f-f0823b4b1ccd" class="">프로퍼티 존재 여부 확인하기</h3><pre id="9f244b07-2cfa-43a7-8608-0809a5c4d76d" class="code"><code>const person = {
+  name: &quot;서지안&quot;, //  멤버
+  age: 29, //  멤버
+  say: function () {
+    console.log(`안녕 나는 ${person[&quot;name&quot;]}`);
+  } //  메서드 -&gt; 방법
+};
+
+console.log(`name : ${&quot;name&quot; in person}`); // name : true
+console.log(`age : ${&quot;age&quot; in person}`); // age : true
+console.log(`gender : ${&quot;gender&quot; in person}`); // gender : false</code></pre><p id="fb35116e-9dc1-4716-957e-2e77f069091c" class="">
+</p><hr id="64dce8e3-a409-4e10-bd94-d660d5599aa0"/><h1 id="ce4af54d-3cd7-441b-a3e1-d950a9e73bb3" class="">배열</h1><pre id="a64c6046-7c02-4054-bc00-fd71de7612f9" class="code"><code>let arr = new Array();
+let arr = []; //  배열 리터럴
+
+let arr = [1, 2, 3, 4, 5]; //  배열 리터럴
+console.log(arr); //  [1, 2, 3, 4, 5]
+
+let arr = [1, &quot;2&quot;, true, null, undefined, {}, [], function () {}]; //  배열 리터럴
+console.log(arr); //  [1, &quot;2&quot;, true, null, undefined, {}, [], function () {}]</code></pre><h2 id="bce75e2c-52d0-407d-9a3e-741b874ac4ca" class="">인덱스</h2><pre id="479585cf-f670-452a-acfa-c63fbebafaa7" class="code"><code>let arr = [1, 2, 3, 4, 5]; //  배열 리터럴
+console.log(arr[0]); //  1
+console.log(arr[1]); //  2
+console.log(arr[2]); //  3
+console.log(arr[3]); //  4
+console.log(arr[4]); //  5</code></pre><h2 id="e25d8c9b-32d9-422d-b3b0-24834f3b5c19" class="">추가</h2><pre id="8396f001-b01b-4b95-8387-99c5b0f9dc08" class="code"><code>let arr = [1, 2, 3, 4, 5]; //  배열 리터럴
+
+arr.push(6);
+console.log(arr); //  [1, 2, 3, 4, 5, 6]
+
+arr.push({ key: &quot;value&quot; });
+console.log(arr); //  [1, 2, 3, 4, 5, Object]</code></pre><h2 id="a29ec9c6-cf45-4265-a331-2a392d22d46f" class="">배열의 길이</h2><pre id="a4a2d37e-54e0-48b7-a978-cf22f5a329c1" class="code"><code>let arr = [1, 2, 3, 4, 5]; //  배열 리터럴
+
+console.log(arr.length);  //  5
+
+arr.push(&quot;6&quot;);
+console.log(arr.length);  //  6</code></pre><p id="409d151a-cb3b-4f19-bf8f-09cf6f9380a6" class="">
+</p><hr id="0ed2e7a3-f36e-42f6-a471-38cf01253544"/><h1 id="e6fb051f-f437-4d87-99c5-2ac9aeff74f1" class="">반복문</h1><h2 id="f0f329ee-f9ca-4707-a2ce-f215ab050286" class="">for 반복문</h2><pre id="b8d22f9d-2178-42e9-892f-847a7bab674c" class="code"><code>//  () 안에 초기화(i = 1), 조건(i &lt;= 100), 연산(i++)
+for (let i = 1; i &lt;= 100; i++) {
+  // 반복 수행할 명령
+  console.log(&quot;winterlood&quot;); //  winterlood 100번 출력
+}</code></pre><h3 id="3dfd0a4e-8881-403a-a054-9920b9762791" class="">인덱스 순회</h3><pre id="fe747859-56fb-4953-9f2b-f61a697b7ab3" class="code"><code>const arr = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;];
+
+for (let i = 0; i &lt; arr.length; i++) {
+  console.log(arr[i]); //  a, b, c
+}</code></pre><h3 id="d9ca4a20-6fb5-47c7-8494-18beb74dca76" class="">객체 순회</h3><pre id="6d6ac829-665b-400b-8abb-87086a7c8dbd" class="code"><code>let person = {
+  name: &quot;서지안&quot;,
+  age: 29,
+  tall: 171
+};
+
+//  key 값만 뽑아서 반환시키는 내장함수
+const personKeys = Object.keys(person);
+console.log(personKeys); //  {&quot;name&quot;, &quot;age&quot;, &quot;tall&quot;}
+for (let i = 0; i &lt; personKeys.length; i++) {
+  console.log(personKeys[i]); //  name, age, tall
+
+  const curKey = personKeys[i];
+  const curValue = person[curKey];
+  console.log(`${curKey}: ${curValue}`); //  name: 서지안, age: 29, tall: 171
+}
+
+//  value 값만 뽑아서 반환시키는 내장함수
+const personValues = Object.values(person);
+for (let i = 0; i &lt; personValues.length; i++) {
+  console.log(personValues[i]); //  서지안, 29, 171
+}</code></pre><p id="d8cf8a42-419a-493e-9892-00d6be987c9b" class="">
+</p><hr id="81166b14-c917-45a5-a783-3127a96a7ba1"/><h1 id="69eec456-a0ed-4483-a065-84b9bb6c88ad" class="">배열 내장 함수</h1><h2 id="61918b37-fc52-4e15-b934-ef3c917fc72c" class="">배열 순회</h2><h3 id="d6efb8d0-495d-4548-8ec8-7b0a8b9d6937" class="">기존 for문 사용</h3><pre id="cf1b7d52-da8b-4f6f-8833-5637e19de2ed" class="code"><code>const arr = [1, 2, 3, 4];
+
+for (let i = 0; i &lt; arr.length; i++) {
+  console.log(arr[i]);  //  1, 2, 3, 4
+}</code></pre><h3 id="960ade14-7a1c-4379-8fd2-88673cd3e51e" class="">forEach</h3><pre id="5efeea4d-be9e-4edb-854a-013783fa2fa2" class="code"><code>const arr = [1, 2, 3, 4];
+
+arr.forEach((elm) =&gt; console.log(elm)); //  1, 2, 3, 4
+
+arr.forEach(function (elm) {
+  console.log(elm);
+}); //  1, 2, 3, 4
+
+arr.forEach(function (elm) {
+  console.log(elm * 2);
+}); //  2, 4, 6, 8
+
+const newArr = [];
+
+arr.forEach(function (elm) {
+  newArr.push(elm * 2);
+});
+
+console.log(newArr); //  [2, 4, 6, 8]</code></pre><h3 id="4b9b6ca7-f881-4add-bb55-c0a361aee804" class="">Map</h3><pre id="eac3cb47-8601-426b-8a68-98747f98f7e7" class="code"><code>const arr = [1, 2, 3, 4];
+const newArr = arr.map((elm) =&gt; {
+  return elm * 2;
+});
+
+console.log(newArr);  //  [2, 4, 6, 8]</code></pre><h3 id="80eb709f-dfb6-4409-91ff-cf4ba288664c" class="">Includes</h3><pre id="2554c606-d2e8-46bc-b98f-d23d878aaad2" class="code"><code>const arr = [1, 2, 3, 4];
+
+let number = 3;
+
+arr.forEach((elm) =&gt; {
+  if (elm === number) {
+    console.log(true);  //  true
+  }
+});
+
+console.log(arr.includes(number)); //  true
+
+let number = &quot;3&quot;;
+console.log(arr.includes(number)); //  false, === 사용</code></pre><h3 id="dce35536-49ca-4749-b799-f7bc4a300f7b" class="">IndexOf</h3><pre id="30f1b704-5eb5-437c-ba64-73e09cd83ca9" class="code"><code>const arr = [1, 2, 3, 4];
+
+let number = &quot;3&quot;;
+console.log(arr.indexOf(number)); //  -1(배열에 없으면 -1 반환)
+
+let number = 3;
+console.log(arr.indexOf(number)); //  2(배열의 인덱스를 반환)</code></pre><h3 id="8e98e0ff-160f-4978-8a19-9f03160d0ae7" class="">FindIndex</h3><pre id="9cb9242e-5240-41f5-b617-fb417f7ee0ef" class="code"><code>const arr = [
+  { color: &quot;red&quot; },
+  { color: &quot;black&quot; },
+  { color: &quot;blue&quot; },
+  { color: &quot;green&quot; }
+];
+
+console.log(arr.findIndex((elm) =&gt; elm.color === &quot;green&quot;)); //  3
+console.log(arr.findIndex((elm) =&gt; elm.color === &quot;red&quot;)); //  0
+
+console.log(
+  arr.findIndex((elm) =&gt; {
+    return elm.color === &quot;red&quot;;
+  })
+); //  0
+console.log(
+  arr.findIndex((elm) =&gt; {
+    return elm.color === &quot;blue&quot;;
+  })
+); //  2
+
+const idx = arr.findIndex((elm) =&gt; {
+  return elm.color === &quot;blue&quot;;
+});
+console.log(idx); //  2
+console.log(arr[idx]); //  {color: &quot;blue&quot;}</code></pre><h3 id="84daea8a-089d-47b5-8957-59ee0b4e72f1" class="">Find</h3><pre id="e209d719-ae8d-4fe0-bf81-eee85005beea" class="code"><code>const arr = [
+  { color: &quot;red&quot; },
+  { color: &quot;black&quot; },
+  { color: &quot;blue&quot; },
+  { color: &quot;green&quot; }
+];
+
+const element = arr.find((elm) =&gt; {
+  return elm.color === &quot;blue&quot;;
+});
+
+console.log(element); //  {color: &quot;blue&quot;}</code></pre><h3 id="8b60890a-1dc1-4526-81ff-12feb069efca" class="">Fillter</h3><pre id="90aa241a-5c70-4dec-9371-aff18530369e" class="code"><code>const arr = [
+  { num: 1, color: &quot;red&quot; },
+  { num: 2, color: &quot;black&quot; },
+  { num: 3, color: &quot;blue&quot; },
+  { num: 4, color: &quot;green&quot; },
+  { num: 5, color: &quot;blue&quot; }
+];
+
+console.log(arr.filter((elm) =&gt; elm.color === &quot;blue&quot;)); //  [Object, Object]
+//  0: Object
+//    num: 3
+//    color: &quot;blue&quot;
+//  1: Object
+//    num: 5
+//    color: &quot;blue&quot;</code></pre><h3 id="f45fef1e-06eb-49c0-b19f-ec9dc26f8a71" class="">Slice</h3><pre id="b7da6667-5873-4a18-a62c-3c0fd7c31143" class="code"><code>const arr = [
+  { num: 1, color: &quot;red&quot; },
+  { num: 2, color: &quot;black&quot; },
+  { num: 3, color: &quot;blue&quot; },
+  { num: 4, color: &quot;green&quot; },
+  { num: 5, color: &quot;blue&quot; }
+];
+
+console.log(arr.slice()); //  [Object, Object, Object, Object, Object]
+console.log(arr.slice(0, 2)); //  [Object, Object]
+console.log(arr.slice(0, 4)); //  [Object, Object, Object, Object]</code></pre><h3 id="293bab4a-0d7a-4caf-be44-b111cf0af3f7" class="">Concat</h3><pre id="40e1dc9e-c9e5-4cdd-9a48-5c4fcaba5c88" class="code"><code>const arr1 = [
+  { num: 1, color: &quot;red&quot; },
+  { num: 2, color: &quot;black&quot; },
+  { num: 3, color: &quot;blue&quot; }
+];
+
+const arr2 = [
+  { num: 4, color: &quot;green&quot; },
+  { num: 5, color: &quot;blue&quot; }
+];
+
+console.log(arr1.concat(arr2)); //  [Object, Object, Object, Object, Object]</code></pre><h3 id="34b02ab2-2df6-46fc-be43-ddf2df62de13" class="">Sort</h3><pre id="a6fd4eff-d776-449d-b0bc-e382ba513cd5" class="code"><code>let chars = [&quot;나&quot;, &quot;다&quot;, &quot;가&quot;];
+chars.sort();
+console.log(chars); //  [&quot;가&quot;, &quot;나&quot;, &quot;다&quot;]
+
+//  숫자는 한번에 제대로 나열이 안됨
+let numbers = [0, 1, 3, 2, 10, 30, 20];
+numbers.sort();
+console.log(numbers); //  [0, 1, 10, 2, 20, 3, 30]
+
+//  오름차순
+const compare = (a, b) =&gt; {
+  if (a &gt; b) {
+    //  1. 크다
+    return 1;
+  }
+  if (a &lt; b) {
+    //  2. 작다
+    return -1;
+  }
+  //  3. 같다
+  return 0;
+};
+numbers.sort(compare);
+console.log(numbers); //  [0, 1, 2, 3, 10, 20, 30]
+
+//  내림차순
+const compare = (a, b) =&gt; {
+  if (a &gt; b) {
+    //  1. 크다
+    return -1;
+  }
+  if (a &lt; b) {
+    //  2. 작다
+    return 1;
+  }
+  //  3. 같다
+  return 0;
+};
+numbers.sort(compare);
+console.log(numbers); //  [30, 20, 10, 3, 2, 1, 0]</code></pre><h3 id="d94a7b0f-d33f-47e0-8b5a-81c0441744e4" class="">Join</h3><pre id="94f20e91-b00e-45b1-a2d6-e7c5797305df" class="code"><code>const arr = [&quot;서지안&quot;, &quot;님&quot;, &quot;안녕하세요&quot;, &quot;또 오셨군요&quot;];
+
+console.log(arr); //  [&quot;서지안&quot;, &quot;님&quot;, &quot;안녕하세요&quot;, &quot;또 오셨군요&quot;]
+console.log(arr[0], arr[1], arr[2], arr[3]);  //  서지안 님 안녕하세요 또 오셨군요
+
+console.log(arr.join()); //  서지안,님,안녕하세요,또 오셨군요
+console.log(arr.join(&quot; &quot;)); //  서지안 님 안녕하세요 또 오셨군요
+console.log(arr.join(&quot;바보&quot;)); //  서지안바보님바보안녕하세요바보또 오셨군요
+console.log(arr.join(&quot;===&quot;)); //  서지안===님===안녕하세요===또 오셨군요</code></pre></div></article></body></html>

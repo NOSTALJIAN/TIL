@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://code.jquery.com/jquery-1.12.2.min.js"></script>
+  <title>TASK 01</title>
+  <script>
+    var task = function () {
+      function ans1() {
+        let num1 = document.getElementById('num1').value;
+        let num2 = document.getElementById('num2').value;
+        let array = [];
+        if (num1 > num2) {
+          for (k = num2; k <= num1; k += 3) {
+            array.push(k);
+          }
+        } else if (num1 < num2) {
+          for (i = num1; i <= num2; i += 3) {
+            array.push(i);
+          }
+        } else {
+          alert('값이 다른 두개의 정수를 입력하시오.');
+        }
+        document.querySelector("result").innerHTML = array;
+      }
+      console.log(array);
+    }
+
+  </script>
+  <style>
+    body {
+      background-color: mistyrose;
+    }
+
+    #quiz {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font-family: 'NanumSquareNeo-Variable';
+    }
+
+    table {
+      width: 300px;
+      background-color: white;
+      text-align: center;
+      border-collapse: collapse;
+    }
+
+    h3 {
+      font-family: 'bitbit';
+      font-size: 30px;
+    }
+
+    td {
+      height: 30px;
+    }
+
+    th,
+    tr {
+      border-bottom: 1px solid lightgray;
+    }
+
+    td:last-child,
+    tr:last-child {
+      border-bottom: none;
+    }
+
+    @font-face {
+      font-family: 'NanumSquareNeo-Variable';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'bitbit';
+      src: url('//cdn.df.nexon.com/img/common/font/DNFBitBit-Regular.woff'), url('//cdn.df.nexon.com/img/common/font/DNFBitBit-Regular.woff2');
+    }
+  </style>
+</head>
+
+<body>
+  <div id="quiz">
+    <table>
+      <thead>
+        <tr>
+          <th colspan="2">
+            <h3>TASK</h3>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            num1
+          </td>
+          <td>
+            <input type="text" name="num1" id="num1">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            num2
+          </td>
+          <td>
+            <input type="text" name="num2" id="num2" onkeypress="task()">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            console.log
+          </td>
+          <td>
+            <input type="text" name="result" id="result">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+
+</html>

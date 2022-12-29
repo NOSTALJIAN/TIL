@@ -1,0 +1,1358 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>JavaScript APPLY</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="5018d253-fc72-4a6b-8f16-25930a31787c" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="JavaScript%20APPLY%205018d253fc724a6b8f1625930a31787c/imgbin_javascript-logo-html-comment-blog-png.png"/></div><h1 class="page-title">JavaScript APPLY</h1></header><div class="page-body"><ul id="059c0bb8-cb9b-46ec-8e5c-7c4135405897" class="toggle"><li><details open=""><summary>목차</summary><nav id="14971808-fa20-4d82-84b5-48cb94e211b2" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#babe2770-3256-4616-b78e-019158a8ffc6">Truthy &amp; Falsy</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#cab13297-4f75-4c75-8b4c-2effb7d19c66">Truthy</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a58221dc-2765-4833-baae-fe95665e9696">Falsy</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#43139473-a1d9-4e3a-b2c5-1775e609aad0">활용</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#f70688a3-e638-4847-96d0-6fa34a5743b7">조건문</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#fbc4dfbe-1fa1-4f6c-a166-99e0e021387f">UNDEFINED</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#c37cef1c-8e87-484a-b843-4a3e276fd006">NULL</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#0c9a2053-243f-482b-bb53-23bbe9ef4e4b">삼항 연산자</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#15a212dd-8e5b-4cbf-9b17-a60fe2ac2408">변수에 활용</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#30945240-cf47-4880-86fd-593bb82c61a6">조건식</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#82b69602-ea8d-4b26-8d45-0d4f9ef10ee4">삼항 연산자 활용</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c5492023-13ea-4240-a43a-c3904e360137">배열에 활용</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#02114691-34a8-422e-aee9-9befa93693e3">조건식</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#fed06e85-6d0b-424b-a307-f671d856d4fb">삼항 연산자 활용 1</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#03b84e0c-d1e9-4160-a387-4c17e6231d73">삼항 연산자 활용 2</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#de84f35b-9aba-40b1-ac0e-bb18c86b234a">주어진 값 확인</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#d4519b18-b245-418c-8c49-8fd89ba15717">Falsy</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#eefc2659-0361-4a06-8e5d-f41b08adfed6">Truthy</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#135d127b-80aa-4904-aeca-393c491d52cd">단락회로 평가</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2ce908ae-c353-4918-b118-999698ae8f94">논리 연산자</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#85cfb1c3-48cd-44cc-a5f5-288b7c6f17a1">AND 연산자</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#25d195e6-7f0e-4571-9fd0-b1c36f87e6dc">OR 연산자</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f9689a1a-c3ad-4fb5-b7ba-8423635b0a73">Truthy &amp; Falsy 활용</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#d8b38155-a145-4871-b60e-e0393245bdda">조건문</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#e3da5cbc-6ed4-4b5e-983b-1eacef330023">활용</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d101897d-307d-4203-94b3-9354e3442b13">조건문 업그레이드</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a0865782-d968-4489-8b3e-e94252ffc473">함수 선언식 활용</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#9cffe447-3763-4a2f-8e61-6b5e52f49a7b">조건문</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#ba3d3ed1-2197-4536-b53a-8260d411da2a">Include 활용</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#7b0cc75b-9523-4436-8f7a-47c12fcebacd">주어진 값에 따라 다른 결과물을 출력</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#a35c2039-71c5-4fe2-9b8d-9bc648353590">괄호 표기법</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b67151ed-d535-4d23-924a-72abf775a1d0">비 구조화 할당(구조 분해 할당)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d15dc0cb-2b0e-4b98-aa9c-27b821f46f68">배열 활용</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#dc9e5a3d-00de-456d-831a-fbcdd3967d73">조건문</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#7861baca-a537-4d28-9f45-3524ffd6d82f">방법 1</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#f6bc845f-3ae3-4dc5-87a1-c3de479ca99c">방법 2 - 배열의 선언 분리</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#92b5dcd7-3b2d-4a1e-82ea-6ce6aa0df334">방법 2 - 기본값 설정</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a5d151b9-c6ee-423b-84a0-f47009b9c33a">SWAP</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#83a673ec-8b14-4c0f-8980-0ca6bb9caaca">조건문</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#d62a213b-d97d-4cc5-a58e-4514b45705e9">활용</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e7b175f1-6307-4758-aeab-8d01d533dceb">객체 활용</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#0cea1d99-d53d-4895-b269-3cd54c3e81b0">조건문</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#fef38f26-bacc-43f0-94e3-87ed307926c1">활용 1</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#e6eb1b22-9b9a-4919-8907-f6d94e938572">활용 2 - 변수명을 다른걸 사용하고 싶을 때</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#9830711b-0027-4fc2-9098-61540544219d">활용 3 - 기본값 설정</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e2615d3a-5c6b-4e28-90f2-1d6006340a51">Spread 연산자</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#fc8e9f03-a443-4057-8d22-987377d05da7">조건문</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0c96cd3a-e3d1-451f-9fde-0b7d412679af">활용</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#d67a066b-eafa-4ce9-8969-588a5c644dfa">객체</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#3c16c4c9-adac-4de0-ba42-8b311a78e3fa">배열</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#c8b2c8b3-45d4-4041-b064-83f5edf666fc">동기 &amp; 비동기</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2585f49b-2705-4add-b22d-83556dd67e90">동기 방식의 처리</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#f4fae90e-19c1-4d6d-b052-018b1fd9310f">자바스크립트의 <mark class="highlight-red">싱글 스레드</mark> 작업 수행 방식</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#01abf06e-965f-4cd5-8c70-2cdbaf547bc6">동기처리 방식의 문제점</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#14c62aaa-7e15-412e-a782-66fe365045a2">비동기 방식의 처리</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#19a09b3e-07bd-44b6-b5b9-5b8a646353cf"><mark class="highlight-red">멀티 쓰레드</mark></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e427ef0d-17c7-4da9-90c0-75f08d62a092">활용</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#ddd2dfb9-eccd-41fd-8024-7432802ba37c">기존</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#9a53d969-87de-46eb-a88e-d741eb0b51c3">비동기 방식 처리 1</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#04d65863-b51e-4f52-8797-c1f1df4969ee">비동기 방식 처리 2</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b01b5ef0-546a-4c1b-bff1-cc76868bd14e">JS Engine</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#cdbbb40c-91ed-43fb-b0df-63c90cc426a3">구성과 역할</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#82073027-be09-49f7-94d3-c7ae87e147b4">Heap</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#3524081a-f2e3-4051-96b4-17d1fcb7540d">Call Stack</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#020ba144-c03e-4662-8579-8990a1095b17">활용 1 - 동기 방식</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#74fe2ace-4054-42e0-a965-2bdc7995ef96">예제</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#f2b4a0a0-1dd7-44d5-8c06-65a00058121d">순서</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#390086e1-7cda-4995-9501-be9a4f6eff1f">활용 2 - 비동기 방식</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#d57f77aa-197b-4fa1-92e3-b5db17e8b1bd">예제 1</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#666dc794-035b-4e08-a595-33f23d0d7266">예제 2 - 비동기 처리의 결과값을 또 다른 비동기처리의 값으로 전송(콜백 지옥 🔥)</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#3f925995-70b5-46c3-83c8-72830bd7c8e1">Promise</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#eda45ebe-501c-4b52-b728-61ef9ff5b64c">과정</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#7d414bb5-9566-4ee2-b55c-1236f1c57fbf">비동기 작업이 가질 수 있는 3가지 상태</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#4a223ce5-8e86-47e1-a770-004845d662eb">Resolve - 해결</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#c0058f34-d728-4a2a-8f35-819b879e37a8">Reject - 거부</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b47dd4ef-dbcc-4984-a606-e07dd9bd3522">실습</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#bcc0d4ed-f306-49bb-a652-4b051edaf949">예제 1</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#3eb1f008-a00f-40e2-950c-0a3e4c87b571">예제 1 - Promise 사용</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#d173a8ce-f842-49ce-aeae-10464659b26a">예제 2</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#615c10e8-0c36-4232-bc22-76a6fd458cf2">예제 2 - Promise 사용</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1c2b6910-720f-475f-80e5-b3453f84b7a4">ASYNC &amp; AWAIT</a></div></nav></details></li></ul><h1 id="babe2770-3256-4616-b78e-019158a8ffc6" class="">Truthy &amp; Falsy</h1><h2 id="cab13297-4f75-4c75-8b4c-2effb7d19c66" class="">Truthy</h2><pre id="f6d579d7-56c8-4854-baba-f68e70d2878d" class="code"><code>let a = [];
+if (a) {
+  console.log(&quot;TRUE&quot;); //  O
+} else {
+  console.log(&quot;FALSE&quot;);
+}
+
+let a = {};
+if (a) {
+  console.log(&quot;TRUE&quot;); //  O
+} else {
+  console.log(&quot;FALSE&quot;);
+}
+
+let a = 42;
+if (a) {
+  console.log(&quot;TRUE&quot;); //  O
+} else {
+  console.log(&quot;FALSE&quot;);
+}
+
+let a = Infinity;
+if (a) {
+  console.log(&quot;TRUE&quot;); //  O
+} else {
+  console.log(&quot;FALSE&quot;);
+}
+
+let a = &quot;string&quot;;
+if (a) {
+  console.log(&quot;TRUE&quot;); //  O
+} else {
+  console.log(&quot;FALSE&quot;);
+}
+
+let a = &quot;0&quot;;
+if (a) {
+  console.log(&quot;TRUE&quot;); //  O
+} else {
+  console.log(&quot;FALSE&quot;);
+}
+
+let a = &quot;false&quot;;
+if (a) {
+  console.log(&quot;TRUE&quot;); //  O
+} else {
+  console.log(&quot;FALSE&quot;);
+}</code></pre><h2 id="a58221dc-2765-4833-baae-fe95665e9696" class="">Falsy</h2><pre id="8cb1e8e8-1868-42f5-a4f1-93ba98ca2fd3" class="code"><code>let a = null;
+if (a) {
+  console.log(&quot;TRUE&quot;);
+} else {
+  console.log(&quot;FALSE&quot;); //  O
+}
+
+let a = undefined;
+if (a) {
+  console.log(&quot;TRUE&quot;);
+} else {
+  console.log(&quot;FALSE&quot;); //  O
+}
+
+let a = 0;
+if (a) {
+  console.log(&quot;TRUE&quot;);
+} else {
+  console.log(&quot;FALSE&quot;); //  O
+}
+
+let a = -0;
+if (a) {
+  console.log(&quot;TRUE&quot;);
+} else {
+  console.log(&quot;FALSE&quot;); //  O
+}
+
+let a = NaN;
+if (a) {
+  console.log(&quot;TRUE&quot;);
+} else {
+  console.log(&quot;FALSE&quot;); //  O
+}
+
+let a = &quot;&quot;;
+if (a) {
+  console.log(&quot;TRUE&quot;);
+} else {
+  console.log(&quot;FALSE&quot;); //  O
+}</code></pre><h2 id="43139473-a1d9-4e3a-b2c5-1775e609aad0" class="">활용</h2><h3 id="f70688a3-e638-4847-96d0-6fa34a5743b7" class="">조건문</h3><pre id="e2cfee6b-addc-472a-8705-fc086c3a1579" class="code"><code>const getName = (person) =&gt; {
+  return person.name;
+};
+
+let person = { name: &quot;서지안&quot; };
+const name = getName(person);
+console.log(name);  //  서지안
+
+let person; //  undefined
+const name = getName(person);
+console.log(name);  //  Error</code></pre><h3 id="fbc4dfbe-1fa1-4f6c-a166-99e0e021387f" class="">UNDEFINED</h3><pre id="d33caebd-f996-4bc8-a3fe-38bdbbdbe93a" class="code"><code>const getName = (person) =&gt; {
+  return person.name;
+};
+
+let person; //  undefined
+const name = getName(person);
+console.log(name);  //  Error</code></pre><pre id="ed049348-945c-402f-bbcb-fc9466e3d2a0" class="code"><code>const getName = (person) =&gt; {
+  if (person === undefined) {
+    return &quot;객체가 아닙니다&quot;;
+  }
+  return person.name;
+};
+
+let person; //  undefined
+const name = getName(person);
+console.log(name); //  객체가 아닙니다</code></pre><pre id="8472a89b-49da-45d7-873a-cc63fc13c054" class="code"><code>const getName = (person) =&gt; {
+  if (!person) {
+		//  false NOT =&gt; True
+    return &quot;객체가 아닙니다&quot;;
+  }
+  return person.name;
+};
+
+let person; //  undefined
+const name = getName(person);
+console.log(name); //  객체가 아닙니다</code></pre><h3 id="c37cef1c-8e87-484a-b843-4a3e276fd006" class="">NULL</h3><pre id="c9931614-f52a-4890-bd79-6ec467d31860" class="code"><code>const getName = (person) =&gt; {
+  if (person === undefined) {
+    return &quot;객체가 아닙니다&quot;;
+  }
+  return person.name;
+};
+
+let person = null; //  null
+const name = getName(person);
+console.log(name); //  Error</code></pre><pre id="f57995ec-02de-4f6f-b499-897e8d4136e7" class="code"><code>const getName = (person) =&gt; {
+  if (person === undefined || person === null) {
+    return &quot;객체가 아닙니다&quot;;
+  }
+  return person.name;
+};
+
+let person = null; //  null
+const name = getName(person);
+console.log(name); //  객체가 아닙니다</code></pre><pre id="0032544f-852a-4666-aef5-3945463e0b34" class="code"><code>const getName = (person) =&gt; {
+  if (!person) {
+		//  false NOT =&gt; True
+    return &quot;객체가 아닙니다&quot;;
+  }
+  return person.name;
+};
+
+let person = null; //  null
+const name = getName(person);
+console.log(name); //  객체가 아닙니다</code></pre><p id="df0778a7-d475-4584-a6a4-c090952c8251" class="">
+</p><hr id="6ab0b8d3-20d9-4e05-b042-429756936f95"/><h1 id="0c9a2053-243f-482b-bb53-23bbe9ef4e4b" class="">삼항 연산자</h1><h2 id="15a212dd-8e5b-4cbf-9b17-a60fe2ac2408" class="">변수에 활용</h2><h3 id="30945240-cf47-4880-86fd-593bb82c61a6" class="">조건식</h3><pre id="924c24e0-4199-4d69-b2f6-236394d193a5" class="code"><code>let a = 3;
+if (a &gt;= 0) {
+  console.log(&quot;양수&quot;); //  O
+} else {
+  console.log(&quot;음수&quot;);
+}</code></pre><h3 id="82b69602-ea8d-4b26-8d45-0d4f9ef10ee4" class="">삼항 연산자 활용</h3><pre id="1193ae3d-5d09-41c2-97c4-b9ac682db734" class="code"><code>let a = 3;
+a &gt;= 0 ? console.log(&quot;양수&quot;) : console.log(&quot;음수&quot;); //  양수
+
+let a = -3;
+a &gt;= 0 ? console.log(&quot;양수&quot;) : console.log(&quot;음수&quot;); //  음수</code></pre><h2 id="c5492023-13ea-4240-a43a-c3904e360137" class="">배열에 활용</h2><h3 id="02114691-34a8-422e-aee9-9befa93693e3" class="">조건식</h3><pre id="b0e78b4c-d12a-4eeb-864a-c04d88a6d8ba" class="code"><code>let a = [];
+if (a.lastIndexOf === 0) {
+  console.log(&quot;빈 배열&quot;);
+} else {
+  console.log(&quot;안 빈 배열&quot;);  //  O
+}</code></pre><h3 id="fed06e85-6d0b-424b-a307-f671d856d4fb" class="">삼항 연산자 활용 1</h3><pre id="7e6b19ad-8076-4e61-9a97-9c43ac382d7f" class="code"><code>let a = [];
+a.length === 0 ? console.log(&quot;빈 배열&quot;) : console.log(&quot;안 빈 배열&quot;);  //  빈 배열
+
+let a = [1, 23];
+a.length === 0 ? console.log(&quot;빈 배열&quot;) : console.log(&quot;안 빈 배열&quot;); //  안 빈 배열</code></pre><h3 id="03b84e0c-d1e9-4160-a387-4c17e6231d73" class="">삼항 연산자 활용 2</h3><pre id="5b176208-2643-4fc8-a1d5-aaa87d4264eb" class="code"><code>let a = [];
+const arrayStatus = a.length === 0 ? &quot;빈 배열&quot; : &quot;안 빈 배열&quot;;
+console.log(arrayStatus); //  빈 배열
+
+let a = [1, 23];
+const arrayStatus = a.length === 0 ? &quot;빈 배열&quot; : &quot;안 빈 배열&quot;;
+console.log(arrayStatus); //  안 빈 배열</code></pre><h2 id="de84f35b-9aba-40b1-ac0e-bb18c86b234a" class="">주어진 값 확인</h2><h3 id="d4519b18-b245-418c-8c49-8fd89ba15717" class="">Falsy</h3><pre id="84072cdd-41f8-4338-aa69-84e090c6abd2" class="code"><code>let a; //  undefined
+
+const result = a ? true : false;
+console.log(result);  //  false, undefined &amp; null은 false 반환</code></pre><h3 id="eefc2659-0361-4a06-8e5d-f41b08adfed6" class="">Truthy</h3><pre id="435380a2-d748-406d-b5d2-620aff373a7a" class="code"><code>let a = [];
+
+const result = a ? true : false;
+console.log(result); //  true</code></pre><pre id="36d1f422-be50-4034-80b1-cb1db113d1dc" class="code"><code>//  TODO : 학점 계산 프로그램
+//  90점 이상 : A+
+//  50점 이상 : B+
+//  둘 다 아니면 F
+
+let score = 100;
+score &gt;= 90
+  ? console.log(&quot;A+&quot;)
+  : score &gt;= 50
+  ? console.log(&quot;B+&quot;)
+  : console.log(&quot;F&quot;); //  A+
+
+
+let score = 40;
+score &gt;= 90
+  ? console.log(&quot;A+&quot;)
+  : score &gt;= 50
+  ? console.log(&quot;B+&quot;)
+  : console.log(&quot;F&quot;); //  F
+
+if (score &gt;= 90) {
+  console.log(&quot;A+&quot;);
+} else if (score &gt;= 50) {
+  console.log(&quot;B+&quot;);
+} else {
+  console.log(&quot;F&quot;);
+} //  F</code></pre><p id="4227b620-eddc-4831-8772-1062f7698fbf" class="">
+</p><hr id="77a62686-8338-4274-a186-18ac1feb9f32"/><h1 id="135d127b-80aa-4904-aeca-393c491d52cd" class="">단락회로 평가</h1><h2 id="2ce908ae-c353-4918-b118-999698ae8f94" class="">논리 연산자</h2><pre id="2c18d2f3-6cd3-4537-a119-f704e5111b77" class="code"><code>console.log(true &amp;&amp; true); //  true
+console.log(true || false); //  true
+console.log(!true); //  false</code></pre><h3 id="85cfb1c3-48cd-44cc-a5f5-288b7c6f17a1" class="">AND 연산자</h3><pre id="1b39b4a4-2a31-46f9-995e-ae639727dd2f" class="code"><code>console.log(false &amp;&amp; true); //  false</code></pre><h3 id="25d195e6-7f0e-4571-9fd0-b1c36f87e6dc" class="">OR 연산자</h3><pre id="557ce089-3bb4-47af-9449-3928c3ffcc72" class="code"><code>console.log(true || false); //  true</code></pre><h2 id="f9689a1a-c3ad-4fb5-b7ba-8423635b0a73" class="">Truthy &amp; Falsy 활용</h2><h3 id="d8b38155-a145-4871-b60e-e0393245bdda" class="">조건문</h3><pre id="3a5d9640-39ab-4f0d-8232-7274e30655ca" class="code"><code>const getName = () =&gt; {
+  if (!person) {
+    return &quot;객체가 아닙니다.&quot;;
+  }
+  return person.name;
+};
+
+let person;
+const name = getName(person);
+console.log(name);  //  객체가 아닙니다.</code></pre><h3 id="e3da5cbc-6ed4-4b5e-983b-1eacef330023" class="">활용</h3><pre id="1202548f-3662-4b44-8fa4-a8f5790526db" class="code"><code>const getName = () =&gt; {
+  return person &amp;&amp; person.name; //  person만 보고 넘어감(person.name 무시)
+};
+
+let person; //  undefined
+const name = getName(person);
+console.log(name); //  undefined</code></pre><pre id="d2799833-49b9-4691-8bec-ff00456eadef" class="code"><code>const getName = () =&gt; {
+  return person &amp;&amp; person.name;
+};
+
+let person = null; //  null
+const name = getName(person);
+console.log(name); //  null</code></pre><pre id="bf4ed19c-57d9-4bb4-893f-6f9543c29266" class="code"><code>const getName = () =&gt; {
+  const name = person &amp;&amp; person.name;
+  return name || &quot;객채가 아닙니다.&quot;;
+};
+
+let person = null;
+const name = getName(person);
+console.log(name); //  객체가 아닙니다.</code></pre><pre id="f462a7c9-91cd-4d2a-a1a0-1dbd482a9f01" class="code"><code>const getName = () =&gt; {
+  const name = person &amp;&amp; person.name; //  서지안
+  return name || &quot;객채가 아닙니다.&quot;;
+};
+
+let person = { name: &quot;서지안&quot; };
+const name = getName(person);
+console.log(name); //  서지안</code></pre><pre id="f1d4b684-b499-45f9-b8a1-0102cab15cbf" class="code"><code>const getName = () =&gt; {
+  const name = person &amp;&amp; person.name; //  null
+  return name || &quot;객채가 아닙니다.&quot;; //  name이 falsy하게 됨
+};
+
+let person = null;
+const name = getName(person);
+console.log(name); //  객체가 아닙니다.</code></pre><p id="35495a0f-c3c3-4442-b6c8-df22c013c01c" class="">
+</p><hr id="c5c0e559-6b14-413b-84eb-0e936e1b58de"/><h1 id="d101897d-307d-4203-94b3-9354e3442b13" class="">조건문 업그레이드</h1><h2 id="a0865782-d968-4489-8b3e-e94252ffc473" class="">함수 선언식 활용</h2><h3 id="9cffe447-3763-4a2f-8e61-6b5e52f49a7b" class="">조건문</h3><pre id="73046152-c433-4caf-b2a6-c212ec65081e" class="code"><code>function isKoreanFood(food) {
+  if (food === &quot;불고기&quot; || food === &quot;비빔밥&quot; || food === &quot;떡볶이&quot;) {
+    return true;
+  }
+  return false;
+}
+
+const food1 = isKoreanFood(&quot;불고기&quot;);
+const food2 = isKoreanFood(&quot;파스타&quot;);
+console.log(food1); //  true
+console.log(food2); //  false</code></pre><h3 id="ba3d3ed1-2197-4536-b53a-8260d411da2a" class="">Include 활용</h3><pre id="e57b01ce-e4fe-42aa-a262-e42c47a0cd0a" class="code"><code>function isKoreanFood(food) {
+  if ([&quot;불고기&quot;, &quot;비빔밥&quot;, &quot;떡볶이&quot;].includes(food)) {
+    return true;
+  }
+  return false;
+}
+const food1 = isKoreanFood(&quot;불고기&quot;);
+const food2 = isKoreanFood(&quot;파스타&quot;);
+console.log(food1); //  true
+console.log(food2); //  false</code></pre><h3 id="7b0cc75b-9523-4436-8f7a-47c12fcebacd" class="">주어진 값에 따라 다른 결과물을 출력</h3><pre id="668a826e-89b6-4ef6-bbac-68aade318f96" class="code"><code>const getMeal = (mealType) =&gt; {
+  if (mealType === &quot;한식&quot;) return &quot;불고기&quot;;
+  if (mealType === &quot;양식&quot;) return &quot;파스타&quot;;
+  if (mealType === &quot;중식&quot;) return &quot;멘보샤&quot;;
+  if (mealType === &quot;일식&quot;) return &quot;초밥&quot;;
+  return &quot;굶기&quot;;
+};
+console.log(getMeal(&quot;한식&quot;)); //  불고기
+console.log(getMeal(&quot;중식&quot;)); //  멘보샤
+console.log(getMeal()); //  굶기</code></pre><h3 id="a35c2039-71c5-4fe2-9b8d-9bc648353590" class="">괄호 표기법</h3><pre id="c6b76a2e-afdf-409e-aad0-447d98284288" class="code"><code>const meal = {
+  한식: &quot;불고기&quot;,
+  중식: &quot;멘보샤&quot;,
+  일식: &quot;초밥&quot;,
+  양식: &quot;스테이크&quot;,
+  인도식: &quot;카레&quot;
+};
+
+const getMeal = (mealType) =&gt; {
+  return meal[mealType] || &quot;굶기&quot;;
+};
+
+console.log(getMeal(&quot;한식&quot;)); //  불고기
+console.log(getMeal(&quot;중식&quot;)); //  멘보샤
+console.log(getMeal()); //  굶기</code></pre><p id="e6a8e2b6-c475-4b84-b0fa-c50ed363eab0" class="">
+</p><hr id="521f2ab3-d848-4e88-b98e-18428906dfd4"/><h1 id="b67151ed-d535-4d23-924a-72abf775a1d0" class="">비 구조화 할당(구조 분해 할당)</h1><h2 id="d15dc0cb-2b0e-4b98-aa9c-27b821f46f68" class="">배열 활용</h2><h3 id="dc9e5a3d-00de-456d-831a-fbcdd3967d73" class="">조건문</h3><pre id="0d90ae33-e966-4f56-a649-c915781d06d1" class="code"><code>let arr = [&quot;one&quot;, &quot;two&quot;, &quot;three&quot;];
+let one = arr[0];
+let two = arr[1];
+let three = arr[2];
+
+console.log(one, two, three); //  one two three</code></pre><h3 id="7861baca-a537-4d28-9f45-3524ffd6d82f" class="">방법 1</h3><pre id="6d3ff0d8-1eaf-4688-9e87-d324d032a666" class="code"><code>let arr = [&quot;one&quot;, &quot;two&quot;, &quot;three&quot;];
+
+let [one, two, three] = arr;
+console.log(one, two, three); //  one two three</code></pre><h3 id="f6bc845f-3ae3-4dc5-87a1-c3de479ca99c" class="">방법 2 - 배열의 선언 분리</h3><pre id="a33394bb-9fef-40ae-a182-8e5b378f044d" class="code"><code>let [one, two, three] = [&quot;one&quot;, &quot;two&quot;, &quot;three&quot;];
+console.log(one, two, three); //  one two three
+
+let [one, two, three, four] = [&quot;one&quot;, &quot;two&quot;, &quot;three&quot;];
+console.log(one, two, three, four); //  one two three undefined</code></pre><h3 id="92b5dcd7-3b2d-4a1e-82ea-6ce6aa0df334" class="">방법 2 - 기본값 설정</h3><pre id="440aabed-6bd5-4dde-8342-f347d2369bd4" class="code"><code>let [one, two, three, four = &quot;four&quot;] = [&quot;one&quot;, &quot;two&quot;, &quot;three&quot;];
+console.log(one, two, three, four); //  one two three four</code></pre><h2 id="a5d151b9-c6ee-423b-84a0-f47009b9c33a" class="">SWAP</h2><h3 id="83a673ec-8b14-4c0f-8980-0ca6bb9caaca" class="">조건문</h3><pre id="891a0909-844a-4427-bc12-fd529dcae637" class="code"><code>let a = 10;
+let b = 20;
+let tmp = 0;
+
+tmp = a;
+a = b;
+b = tmp;
+
+console.log(a, b);  //  20 10</code></pre><h3 id="d62a213b-d97d-4cc5-a58e-4514b45705e9" class="">활용</h3><pre id="0ff44499-9a51-4853-964c-bbc2a8bdfeec" class="code"><code>let a = 10;
+let b = 20;
+
+[a, b] = [b, a];
+
+console.log(a, b); //  20 10</code></pre><h2 id="e7b175f1-6307-4758-aeab-8d01d533dceb" class="">객체 활용</h2><h3 id="0cea1d99-d53d-4895-b269-3cd54c3e81b0" class="">조건문</h3><pre id="9fbdeb46-3906-4503-a29c-1dd38233d4e3" class="code"><code>let object = { one: &quot;one&quot;, two: &quot;two&quot;, three: &quot;three&quot; };
+
+let one = object[&quot;one&quot;];
+let two = object.two;
+let three = object.three;
+
+console.log(one, two, three); //  one two three</code></pre><h3 id="fef38f26-bacc-43f0-94e3-87ed307926c1" class="">활용 1</h3><pre id="ae29bad2-b30b-4582-b0f8-3ab7b877d53a" class="code"><code>let object = { one: &quot;one&quot;, two: &quot;two&quot;, three: &quot;three&quot; };
+let { one, two, three } = object;
+console.log(one, two, three); //  one two three
+
+let object = { one: &quot;one&quot;, two: &quot;two&quot;, three: &quot;three&quot;, name: &quot;서지안&quot; };
+let { name, one, two, three } = object;
+console.log(one, two, three, name); //  one two three 서지안</code></pre><h3 id="e6eb1b22-9b9a-4919-8907-f6d94e938572" class="">활용 2 - 변수명을 다른걸 사용하고 싶을 때</h3><pre id="c7219523-25f1-4e20-ac70-dc5e608f27af" class="code"><code>let object = { one: &quot;one&quot;, two: &quot;two&quot;, three: &quot;three&quot;, name: &quot;서지안&quot; };
+let { name: myName, one: oneOne, two, three } = object;
+console.log(oneOne, two, three, myName); //  one two three 서지안</code></pre><h3 id="9830711b-0027-4fc2-9098-61540544219d" class="">활용 3 - 기본값 설정</h3><pre id="f26359c8-520a-479d-bff4-8ea9cc5a3493" class="code"><code>let object = { one: &quot;one&quot;, two: &quot;two&quot;, three: &quot;three&quot;, name: &quot;서지안&quot; };
+let { name: myName, one: oneOne, two, three, abc } = object;
+console.log(oneOne, two, three, myName, abc); //  one two three 서지안 undefined</code></pre><pre id="fc88afc1-36cc-45d0-a8be-813ec34e1916" class="code"><code>let object = { one: &quot;one&quot;, two: &quot;two&quot;, three: &quot;three&quot;, name: &quot;서지안&quot; };
+let { name: myName, one: oneOne, two, three, abc = &quot;four&quot; } = object;
+console.log(oneOne, two, three, myName, abc); //  one two three 서지안 four</code></pre><p id="fe618f8b-8d93-4d20-bcd5-3d65f36da379" class="">
+</p><hr id="fa5b9798-f931-4d93-bc7e-0e61dd11be39"/><h1 id="e2615d3a-5c6b-4e28-90f2-1d6006340a51" class="">Spread 연산자</h1><h2 id="fc8e9f03-a443-4057-8d22-987377d05da7" class="">조건문</h2><pre id="57c1be73-218b-4304-8b47-19c8008193b1" class="code"><code>const cookie = {
+  base: &quot;cookie&quot;,
+  madeIn: &quot;korea&quot;
+}
+
+const chocochipCookie = {
+  base: &quot;cookie&quot;,
+  madeIn: &quot;korea&quot;,
+  toping: &quot;chocochip&quot;
+}
+
+const blueberryCookie = {
+  base: &quot;cookie&quot;,
+  madeIn: &quot;korea&quot;,
+  toping: &quot;blueberry&quot;
+}
+
+const strawberryCookie = {
+  base: &quot;cookie&quot;,
+  madeIn: &quot;korea&quot;,
+  toping: &quot;strawberry&quot;
+}</code></pre><h2 id="0c96cd3a-e3d1-451f-9fde-0b7d412679af" class="">활용</h2><h3 id="d67a066b-eafa-4ce9-8969-588a5c644dfa" class="">객체</h3><pre id="94096690-07f2-48b6-949e-604b90ef99ce" class="code"><code>const cookie = {
+  base: &quot;cookie&quot;,
+  madeIn: &quot;korea&quot;
+};
+
+const chocochipCookie = {
+  ...cookie,
+  toping: &quot;chocochip&quot;
+};
+
+const blueberryCookie = {
+  ...cookie,
+  toping: &quot;blueberry&quot;
+};
+
+const strawberryCookie = {
+  ...cookie,
+  toping: &quot;strawberry&quot;
+};
+
+console.log(chocochipCookie); //  {base: &quot;cookie&quot;, madeIn: &quot;korea&quot;, toping: &quot;chocochip&quot;}
+console.log(blueberryCookie); //  {base: &quot;cookie&quot;, madeIn: &quot;korea&quot;, toping: &quot;blueberry&quot;}
+console.log(strawberryCookie); //  {base: &quot;cookie&quot;, madeIn: &quot;korea&quot;, toping: &quot;strawberry&quot;}</code></pre><h3 id="3c16c4c9-adac-4de0-ba42-8b311a78e3fa" class="">배열</h3><pre id="3be03b00-079b-42a3-a97f-ea9b05a11e9a" class="code"><code>const noTopingCookies = [&quot;촉촉한 쿠키&quot;, &quot;안 촉촉한 쿠키&quot;];
+const topingCookies = [
+  &quot;바나나 쿠키&quot;,
+  &quot;블루베리 쿠키&quot;,
+  &quot;딸기 쿠키&quot;,
+  &quot;초코칩 쿠키&quot;
+];
+
+const allCookies = [...noTopingCookies, ...topingCookies];
+console.log(allCookies); //  [&quot;촉촉한 쿠키&quot;, &quot;안 촉촉한 쿠키&quot;, &quot;바나나 쿠키&quot;, &quot;블루베리 쿠키&quot;, &quot;딸기 쿠키&quot;, &quot;초코칩 쿠키&quot;]
+
+const allCookies = [...noTopingCookies, &quot;함정 쿠키&quot;, ...topingCookies];
+console.log(allCookies); //  [&quot;촉촉한 쿠키&quot;, &quot;안 촉촉한 쿠키&quot;, &quot;함정 쿠키&quot;, &quot;바나나 쿠키&quot;, &quot;블루베리 쿠키&quot;, &quot;딸기 쿠키&quot;, &quot;초코칩 쿠키&quot;]</code></pre><p id="a78d87b4-bf93-4cdd-b34d-de53d2071d26" class="">
+</p><hr id="03341f4e-d6e2-47ca-b0f4-95f710aaa5ad"/><h1 id="c8b2c8b3-45d4-4041-b064-83f5edf666fc" class="">동기 &amp; 비동기</h1><h2 id="2585f49b-2705-4add-b22d-83556dd67e90" class="">동기 방식의 처리</h2><h3 id="f4fae90e-19c1-4d6d-b052-018b1fd9310f" class="">자바스크립트의 <mark class="highlight-red">싱글 스레드</mark> 작업 수행 방식</h3><ul id="accf326d-5c3c-4a6e-8de3-2da70e22a0eb" class="bulleted-list"><li style="list-style-type:disc">자바스크립트는 <strong>코드가 작성된 순서</strong>대로 작업을 처리함</li></ul><ul id="54d5fa71-6892-4909-afee-3d7a9900fbf3" class="bulleted-list"><li style="list-style-type:disc">이전 작업이 진행 중 일 때는 다음 작업을 <strong>수행하지 않고 기다림</strong></li></ul><ul id="2d2d360c-dfa0-4a74-85c5-8c682ba01613" class="bulleted-list"><li style="list-style-type:disc">먼저 작성된 코드를 먼저 다 실행하고 나서 뒤에 작성된 코드를 실행함</li></ul><ul id="87dffa53-1bcc-4a82-b2ca-6e06afc98178" class="bulleted-list"><li style="list-style-type:disc"><strong><mark class="highlight-yellow_background">블로킹 방식</mark></strong></li></ul><pre id="c346fa47-31cb-479d-aeec-b127a387f623" class="code"><code>/* 수행해야 할 작업(함수) 3개 */
+function taskA() {
+  console.log(&quot;TASK A&quot;);
+}
+function taskB() {
+  console.log(&quot;TASK B&quot;);
+}
+function taskC() {
+  console.log(&quot;TASK C&quot;);
+}
+
+/* 작업 실행(함수 호출) 순서 */
+taskA();
+taskB();
+taskC();</code></pre><h3 id="01abf06e-965f-4cd5-8c70-2cdbaf547bc6" class="">동기처리 방식의 문제점</h3><ul id="a15413d8-0883-4294-a332-e46dca3db053" class="bulleted-list"><li style="list-style-type:disc">하나의 작업이 너무 오래 걸리게 될 시,
+모든 작업이 오래 걸리는 하나의 작업이 종료되기 전 까지 올 스탑 되기 때문에
+<strong>전반적인 흐름이 느려진다</strong>.<p id="c7b1b1b8-d9b7-4255-8b8f-4f08662fc965" class=""><strong>ex)</strong> 버튼 하나하나마다 30초씩 걸리면….. 🤯</p></li></ul><h2 id="14c62aaa-7e15-412e-a782-66fe365045a2" class="">비동기 방식의 처리</h2><h3 id="19a09b3e-07bd-44b6-b5b9-5b8a646353cf" class=""><mark class="highlight-red">멀티 쓰레드</mark></h3><ul id="3abf526e-f0e6-4fea-87a4-3659eafc0db2" class="bulleted-list"><li style="list-style-type:disc">코드를 실행하는 일꾼 Thread를 여러 개 사용하는 방식인
+<mark class="highlight-yellow_background"><strong>MultiThread</strong></mark> 방식으로 작동시키면 작업 분할이 가능<p id="c47ad468-1f7d-48cd-8ca4-94a17476ba7f" class="">➠ 작업이 오래 걸려도 다른 일꾼 Thread에게 지시하면 되므로 괜찮음</p></li></ul><ul id="3d6cd20f-8020-4791-ab6d-9a0a3ff209db" class="bulleted-list"><li style="list-style-type:disc"><strong><mark class="highlight-yellow_background">자바스크립트는 싱글 쓰레드로 동작함</mark></strong><p id="ba11608b-75e8-41ca-8ea5-e570b22c8fe5" class="">➠ 일꾼을 여러 개 사용하는 방식이 불가</p></li></ul><ul id="4fd905cb-5470-4b23-9311-94f70cacde63" class="bulleted-list"><li style="list-style-type:disc">싱글 쓰레드 방식을 이용하면서, 동기적 작업의 단점을 극복하기 위해 <strong>여러개의 작업을 동시에 실행</strong>시킴<p id="1c35e239-acde-4488-9bc1-52bb85b60fc1" class="">➠ 먼저 작성된 코드의 <strong>결과를 기다리지 않고 다음 코드를 바로 실행</strong></p><p id="72305185-eeda-4adc-8e88-4f076622725a" class="">➠ <mark class="highlight-yellow_background"><strong>비동기 작업</strong></mark>(논 블로킹 방식)</p></li></ul><pre id="721de855-9bfa-4549-be88-26709cd16938" class="code"><code>function taskA() {
+  console.log(&quot;TASK A&quot;);
+}
+function taskB() {
+  console.log(&quot;TASK B&quot;);
+}
+function taskC() {
+  console.log(&quot;TASK C&quot;);
+}
+
+taskA((resultA) =&gt; {
+  console.log(`A 끝났습니다. 작업 결과 : ${resultA}`);  //  A 콜백
+});
+taskB((resultB) =&gt; {
+  console.log(`B 끝났습니다. 작업 결과 : ${resultB}`);  //  B 콜백
+});
+taskC((resultC) =&gt; {
+  console.log(`C 끝났습니다. 작업 결과 : ${resultC}`);  //  C 콜백
+});</code></pre><h2 id="e427ef0d-17c7-4da9-90c0-75f08d62a092" class="">활용</h2><h3 id="ddd2dfb9-eccd-41fd-8024-7432802ba37c" class="">기존</h3><pre id="6d5d251d-eb15-49b9-94b8-2f046c4f41fe" class="code"><code>/* 기존 동기방식 처리 */
+function taskA() {
+  console.log(&quot;A 작업 끝&quot;);
+}
+
+taskA();
+console.log(&quot;코드 끝&quot;); //  코드 끝</code></pre><h3 id="9a53d969-87de-46eb-a88e-d741eb0b51c3" class="">비동기 방식 처리 1</h3><pre id="e56244a8-db46-458c-ba97-f71af04afd2a" class="code"><code>function taskA() {
+  setTimeout(() =&gt; {
+    console.log(&quot;A TASK END&quot;);
+  }, 2000); //  2초 후에 출력
+}
+
+taskA();
+console.log(&quot;코드 끝&quot;); //  코드 끝, A TASK END</code></pre><h3 id="04d65863-b51e-4f52-8797-c1f1df4969ee" class="">비동기 방식 처리 2</h3><pre id="a065f6a6-ea98-49e9-958f-83fae724b45a" class="code"><code>function taskA(a, b, cb) {
+  setTimeout(() =&gt; {
+    const res = a + b; //  지역 상수
+    cb(res); //  콜백 함수
+  }, 3000); //  3초 후에 출력
+}
+function taskB(a, cb) {
+  setTimeout(() =&gt; {
+    const res = a * 2;
+    cb(res);
+  }, 1000);
+}
+function taskC(a, cb) {
+  setTimeout(() =&gt; {
+    const res = a * -1;
+    cb(res);
+  }, 2000);
+}
+
+taskA(3, 4, (res) =&gt; {
+  console.log(&quot;A TASK RESULT : &quot;, res);
+});
+taskB(7, (res) =&gt; {
+  console.log(&quot;B TASK RESULT : &quot;, res);
+});
+taskC(14, (res) =&gt; {
+  console.log(&quot;B TASK RESULT : &quot;, res);
+});
+console.log(&quot;코드 끝&quot;); //  코드 끝, B TASK RESULT : 14, C TASK RESULT : -14, A TASK RESULT : 7</code></pre><p id="a9a05440-f178-4783-bdb5-abbe660e13fd" class="">
+</p><hr id="00f33d1c-29f3-4a11-bfb4-eedf76c8dda3"/><h1 id="b01b5ef0-546a-4c1b-bff1-cc76868bd14e" class="">JS Engine</h1><h2 id="cdbbb40c-91ed-43fb-b0df-63c90cc426a3" class="">구성과 역할</h2><h3 id="82073027-be09-49f7-94d3-c7ae87e147b4" class="">Heap</h3><ul id="f82cd657-fa72-497e-b744-058dd1c1ac68" class="bulleted-list"><li style="list-style-type:disc">메모리 할당</li></ul><h3 id="3524081a-f2e3-4051-96b4-17d1fcb7540d" class="">Call Stack</h3><ul id="8a8703ff-020b-4fba-b69c-76a6d3a8d1bc" class="bulleted-list"><li style="list-style-type:disc">코드 실행</li></ul><h2 id="020ba144-c03e-4662-8579-8990a1095b17" class="">활용 1 - 동기 방식</h2><h3 id="74fe2ace-4054-42e0-a965-2bdc7995ef96" class="">예제</h3><pre id="0289a254-ae55-4863-93f0-157506bf2700" class="code"><code>function one() {
+  return 1;
+}
+function two() {
+  return one() + 1;
+}
+function three() {
+  return two() + 1;
+}
+
+console.log(three()); //  3</code></pre><h3 id="f2b4a0a0-1dd7-44d5-8c06-65a00058121d" class="">순서</h3><ol type="1" id="49403546-a288-4fe2-a157-aa33f26464c5" class="numbered-list" start="1"><li><mark class="highlight-yellow_background"><strong>Main Context</strong></mark>가 <strong>Call Stack</strong>에 들어오게 됨(실행)</li></ol><ol type="1" id="e9ac1215-40bb-45c8-88b0-00dad31b829e" class="numbered-list" start="2"><li><mark class="highlight-yellow_background"><strong>three()</strong></mark> 실행, <strong>Call Stack</strong>에 추가</li></ol><ol type="1" id="c057d71b-6cc1-4439-a945-57c2fccbe16d" class="numbered-list" start="3"><li><mark class="highlight-yellow_background"><strong>two()</strong></mark> 실행, <strong>Call Stack</strong>에 추가</li></ol><ol type="1" id="6d58b743-914d-4ec0-ab1c-74db7d410e7e" class="numbered-list" start="4"><li><mark class="highlight-yellow_background"><strong>one()</strong></mark> 실행, <strong>Call Stack</strong>에 추가</li></ol><ol type="1" id="45344f72-9990-4390-9f40-62f43206d49f" class="numbered-list" start="5"><li><mark class="highlight-yellow_background"><strong>one()</strong></mark> 종료, <strong>Call Stack</strong>에서 제거</li></ol><ol type="1" id="466af0bd-6e7d-4bfe-81e6-5c3577d07018" class="numbered-list" start="6"><li><mark class="highlight-yellow_background"><strong>two()</strong></mark> 종료, <strong>Call Stack</strong>에서 제거</li></ol><ol type="1" id="b4d1a07b-2d75-4f81-8fb4-71537debc215" class="numbered-list" start="7"><li><mark class="highlight-yellow_background"><strong>three()</strong></mark> 종료, <strong>Call Stack</strong>에서 제거</li></ol><ol type="1" id="11b63718-1d2b-4dcf-ba7a-c8b842441829" class="numbered-list" start="8"><li><strong>반환값</strong> 3 출력</li></ol><ol type="1" id="d6739a77-5b27-4c75-aee8-267c98ea6fac" class="numbered-list" start="9"><li><mark class="highlight-yellow_background"><strong>Main Context</strong></mark>가 <strong>Call Stack</strong>에서 제거 됨(종료)</li></ol><p id="84b99987-c76c-4da7-9e23-7f18064dcec7" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="90da4b76-1003-4c3b-8581-05725a74232a"><div style="font-size:1.5em"><span class="icon">📌</span></div><div style="width:100%"><strong>JS Engine</strong>은 <strong>Call Stack</strong>이 <span style="border-bottom:0.05em solid">하나만</span> 있음 ➠ <strong>Single Thread</strong>로 동작</div></figure><h2 id="390086e1-7cda-4995-9501-be9a4f6eff1f" class="">활용 2 - 비동기 방식</h2><h3 id="d57f77aa-197b-4fa1-92e3-b5db17e8b1bd" class="">예제 1</h3><pre id="e4774eff-fdce-4827-92ac-3704bb0a2983" class="code"><code>function asyncAdd(a, b, cb) {
+  setTimeout(() =&gt; {
+    const res = a + b;
+    cb(res);
+  }, 3000); //  3초 후
+}
+
+asyncAdd(1, 3, (res) =&gt; {
+  console.log(&quot;결과  : &quot;, res); //  결과 : 4
+});</code></pre><ol type="1" id="72d8f555-a923-4170-9c6b-b1fe44816807" class="numbered-list" start="1"><li><mark class="highlight-yellow_background"><strong>Main Context</strong></mark>가 <strong>Call Stack</strong>에 들어오게 됨(실행)</li></ol><ol type="1" id="566539e6-542d-4538-88ff-e475133eea4d" class="numbered-list" start="2"><li><mark class="highlight-yellow_background"><strong>asyncAdd()</strong></mark> 실행, <strong>Call Stack</strong>에 추가</li></ol><ol type="1" id="2c4bcbf8-5c75-40fe-b712-e2a38635e471" class="numbered-list" start="3"><li><mark class="highlight-blue_background"><strong>setTimeout(cb())</strong></mark> 실행, <strong>Call Stack</strong>에 추가</li></ol><ol type="1" id="a2f88882-a86d-435b-9eef-14a54b91a217" class="numbered-list" start="4"><li><strong>Web APIs</strong>로 <mark class="highlight-blue_background"><strong>setTimeout(cb())</strong></mark> 넘김 ➠ <span style="border-bottom:0.05em solid">멈추는게 아님</span></li></ol><ol type="1" id="911ba9a4-9743-4130-b514-5a9e249e0ad0" class="numbered-list" start="5"><li><mark class="highlight-yellow_background"><strong>asyncAdd()</strong></mark> 종료, <strong>Call Stack</strong>에서 제거</li></ol><ol type="1" id="464e25d3-eae5-4fb1-9048-69581672a81c" class="numbered-list" start="6"><li><mark class="highlight-blue_background"><strong>setTimeout(cb())</strong></mark>의 <mark class="highlight-blue_background"><strong>cb()</strong></mark>가 <strong>Callback Queue</strong>로 옮겨짐</li></ol><ol type="1" id="2523612b-d91e-48cb-8b84-7ee6f7cbe08e" class="numbered-list" start="7"><li><strong>Event Loop</strong>는 <strong>Call Stack</strong>에 <mark class="highlight-yellow_background"><strong>Main Context</strong></mark>를 제외한 다른 함수가 남아있는지 확인</li></ol><ol type="1" id="db2fdbfe-3c43-4619-9a91-84d8e5c04d60" class="numbered-list" start="8"><li><mark class="highlight-yellow_background"><strong>Main Context</strong></mark>를 제외한 다른 함수가 없으면 <strong>Event Loop</strong>가 <mark class="highlight-blue_background"><strong>cb()</strong></mark>를 <strong>Call Stack</strong>로 옮김</li></ol><ol type="1" id="b53f8661-9e99-4b43-ba97-bce508623711" class="numbered-list" start="9"><li><mark class="highlight-blue_background"><strong>cb()</strong></mark> 실행, <strong>Call Stack</strong>에서 제거</li></ol><ol type="1" id="6e599e7f-238d-45a2-85cf-e8701fc16511" class="numbered-list" start="10"><li><mark class="highlight-yellow_background"><strong>Main Context</strong></mark>가 <strong>Call Stack</strong>에서 제거 됨(종료)</li></ol><h3 id="666dc794-035b-4e08-a595-33f23d0d7266" class="">예제 2 - 비동기 처리의 결과값을 또 다른 비동기처리의 값으로 전송(콜백 지옥 🔥)</h3><pre id="ee793c05-2715-41f4-844d-0c10dad1c438" class="code"><code>function taskA(a, b, cb) {
+  setTimeout(() =&gt; {
+    const res = a + b; //  지역 상수
+    cb(res); //  콜백 함수
+  }, 3000); //  3초 후에 출력
+}
+function taskB(a, cb) {
+  setTimeout(() =&gt; {
+    const res = a * 2;
+    cb(res);
+  }, 1000);
+}
+function taskC(a, cb) {
+  setTimeout(() =&gt; {
+    const res = a * -1;
+    cb(res);
+  }, 2000);
+}
+
+taskA(4, 5, (a_res) =&gt; {
+  console.log(&quot;A RESULT : &quot;, a_res);
+  taskB(a_res, (b_res) =&gt; {
+    console.log(&quot;B RESULT : &quot;, b_res);
+    taskC(b_res, (c_res) =&gt; {
+      console.log(&quot;C RESULT : &quot;, c_res);
+    });
+  });
+});
+
+console.log(&quot;코드 끝&quot;); //  코드 끝, A RESULT : 9, B RESULT : 18, C RESULT : -18</code></pre><p id="32676886-2b51-4d40-be30-a7c9abf86183" class="">
+</p><hr id="6b880583-458d-47a4-a9bd-969c8ca77614"/><h1 id="3f925995-70b5-46c3-83c8-72830bd7c8e1" class="">Promise</h1><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="f8a46b91-f3f6-492a-919f-f9ad09383a2b"><div style="font-size:1.5em"><span class="icon">🔥</span></div><div style="width:100%"><strong>콜백 지옥</strong> <mark class="highlight-red"><strong>탈출</strong></mark></div></figure><h2 id="eda45ebe-501c-4b52-b728-61ef9ff5b64c" class="">과정</h2><h3 id="7d414bb5-9566-4ee2-b55c-1236f1c57fbf" class="">비동기 작업이 가질 수 있는 3가지 상태</h3><ol type="1" id="45057a72-7f31-41fe-bb99-080ecd28f553" class="numbered-list" start="1"><li><strong>Pending</strong>(대기 상태)</li></ol><ol type="1" id="9b10733f-3745-48fe-a21e-7a87ac00fb33" class="numbered-list" start="2"><li><strong>Fulfilled</strong>(성공)</li></ol><ol type="1" id="3603418d-2840-43e5-82ed-1bb413f74509" class="numbered-list" start="3"><li><strong>Rejected</strong>(실패)</li></ol><h3 id="4a223ce5-8e86-47e1-a770-004845d662eb" class="">Resolve - 해결</h3><p id="7f35d62c-bc80-499c-96b5-bacd4c1f4ae1" class="">❓ <strong>Pending</strong> 상태에서 <strong>Fulfilled</strong>로 변화하는 과정</p><h3 id="c0058f34-d728-4a2a-8f35-819b879e37a8" class="">Reject - 거부</h3><p id="498c519d-94fa-4dc3-8511-de5c61cf20bd" class="">❓ <strong>Pending</strong> 상태에서 <strong>Rejected</strong>로 변화하는 과정</p><h2 id="b47dd4ef-dbcc-4984-a606-e07dd9bd3522" class="">실습</h2><h3 id="bcc0d4ed-f306-49bb-a652-4b051edaf949" class="">예제 1</h3><pre id="08cb3662-d688-4ddc-bb07-517f836b5756" class="code"><code>function isPositive(number, resolve, reject) {
+  setTimeout(() =&gt; {
+    if (typeof number === &quot;number&quot;) {
+      //  성공 -&gt; resolve
+      resolve(number &gt;= 0 ? &quot;양수&quot; : &quot;음수&quot;);
+    } else {
+      //  실패 -&gt; reject
+      reject(&quot;주어진 값이 숫자형 값이 아닙니다.&quot;);
+    }
+  }, 2000);
+}
+
+isPositive(
+  10,
+  (res) =&gt; {
+    console.log(&quot;성공적으로 수행됨 : &quot;, res);
+  },
+  (err) =&gt; {
+    console.log(&quot;실패 하였음 : &quot;, err);
+  }
+);  //  성공적으로 수행됨 : 양수
+
+isPositive(
+  [],
+  (res) =&gt; {
+    console.log(&quot;성공적으로 수행됨 : &quot;, res);
+  },
+  (err) =&gt; {
+    console.log(&quot;실패 하였음 : &quot;, err);
+  }
+);  //  실패 하였음 :  주어진 값이 숫자형 값이 아닙니다.</code></pre><h3 id="3eb1f008-a00f-40e2-950c-0a3e4c87b571" class="">예제 1 - Promise 사용</h3><pre id="0d92c06a-e901-459b-99ee-e42e7b292f53" class="code"><code>function isPositiveP(number) {
+  const executor = (resolve, reject) =&gt; {
+    setTimeout(() =&gt; {
+      if (typeof number === &quot;number&quot;) {
+        //  성공 -&gt; resolve
+        console.log(number);
+        resolve(number &gt;= 0 ? &quot;양수&quot; : &quot;음수&quot;);
+      } else {
+        //  실패 -&gt; reject
+        reject(&quot;주어진 값이 숫자형 값이 아닙니다.&quot;);
+      }
+    }, 2000);
+  };
+  const asyncTask = new Promise(executor);
+  return asyncTask;
+}
+
+const res = isPositiveP(101);
+res
+  .then((res) =&gt; {
+    //  resolve
+    console.log(&quot;작업 성공 : &quot;, res);
+  })
+  .catch((err) =&gt; {
+    //  reject
+    console.log(&quot;작업 실패 : &quot;, err);
+  });
+//  101, 작업 성공 :  양수
+
+const res = isPositiveP([]);
+res
+  .then((res) =&gt; {
+    //  resolve
+    console.log(&quot;작업 성공 : &quot;, res);
+  })
+  .catch((err) =&gt; {
+    //  reject
+    console.log(&quot;작업 실패 : &quot;, err);
+  });
+//  작업 실패 :  주어진 값이 숫자형 값이 아닙니다.</code></pre><h3 id="d173a8ce-f842-49ce-aeae-10464659b26a" class="">예제 2</h3><pre id="e0b5c908-7e2e-4496-b670-118f260cf850" class="code"><code>function taskA(a, b, cb) {
+  setTimeout(() =&gt; {
+    const res = a + b;
+    cb(res);
+  }, 3000);
+}
+function taskB(a, cb) {
+  setTimeout(() =&gt; {
+    const res = a * 2;
+    cb(res);
+  }, 1000);
+}
+function taskC(a, cb) {
+  setTimeout(() =&gt; {
+    const res = a * -1;
+    cb(res);
+  }, 2000);
+}
+
+taskA(3, 4, (a_res) =&gt; {
+  console.log(&quot;task A : &quot;, a_res);
+  taskB(a_res, (b_res) =&gt; {
+    console.log(&quot;task B : &quot;, b_res);
+    taskC(b_res, (c_res) =&gt; {
+      console.log(&quot;task C : &quot;, c_res);
+    });
+  });
+});
+
+//  task A : 7, task B : 14, task C : -14</code></pre><h3 id="615c10e8-0c36-4232-bc22-76a6fd458cf2" class="">예제 2 - Promise 사용</h3><pre id="1aeb3da9-9be9-458b-9539-ec6a3f4ba2db" class="code"><code>function taskA(a, b) {
+  return new Promise((resolve, reject) =&gt; {
+    setTimeout(() =&gt; {
+      const res = a + b;
+      resolve(res);
+    }, 3000);
+  });
+}
+function taskB(a) {
+  return new Promise((resolve, reject) =&gt; {
+    setTimeout(() =&gt; {
+      const res = a * 2;
+      resolve(res);
+    }, 1000);
+  });
+}
+function taskC(a) {
+  return new Promise((resolve, reject) =&gt; {
+    setTimeout(() =&gt; {
+      const res = a * -1;
+      resolve(res);
+    }, 2000);
+  });
+}
+
+/* then의 잘못된 사용 */
+taskA(5, 1).then((a_res) =&gt; {
+  console.log(&quot;A RESULT : &quot;, a_res);
+  taskB(a_res).then((b_res) =&gt; {
+    console.log(&quot;B RESULT : &quot;, b_res);
+    taskC(b_res).then((c_res) =&gt; {
+      console.log(&quot;C RESULT : &quot;, c_res);
+    });
+  });
+});
+
+/* then 체이닝 */
+taskA(5, 1)
+  .then((a_res) =&gt; {
+    console.log(&quot;A RESULT : &quot;, a_res);
+    return taskB(a_res);
+  })
+  .then((b_res) =&gt; {
+    console.log(&quot;B RESULT : &quot;, b_res);
+    return taskC(b_res);
+  })
+  .then((c_res) =&gt; {
+    console.log(&quot;C RESULT : &quot;, c_res);
+  });
+//  A RESULT : 6, B RESULT : 12, C RESULT : -12
+
+/* then 체이닝 활용 */
+const bPromiseResult = taskA(5, 1).then((a_res) =&gt; {
+  console.log(&quot;A RESULT : &quot;, a_res);
+  return taskB(a_res);
+});
+console.log(&quot;bladjlksfhjkjsdjk&quot;);
+bPromiseResult
+  .then((b_res) =&gt; {
+    console.log(&quot;B RESULT : &quot;, b_res);
+    return taskC(b_res);
+  })
+  .then((c_res) =&gt; {
+    console.log(&quot;C RESULT : &quot;, c_res);
+  });
+//  bladjlksfhjkjsdjk, A RESULT : 6, B RESULT : 12, C RESULT : -12</code></pre><p id="9b26190d-2e98-4b15-9399-f20c45e76a56" class="">
+</p><hr id="85960815-0875-4b1e-9a95-f9a7c38b440c"/><h1 id="1c2b6910-720f-475f-80e5-b3453f84b7a4" class="">ASYNC &amp; AWAIT</h1><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="48772770-e4e7-4def-8acc-eff30b1c38a5"><div style="font-size:1.5em"><span class="icon">🔥</span></div><div style="width:100%"><strong>직관적</strong>인 <strong>비 동기 처리 </strong>코드 작성하기</div></figure><p id="380af4f6-a118-4a73-999d-3ac822d5e708" class="">
+</p></div></article></body></html>
